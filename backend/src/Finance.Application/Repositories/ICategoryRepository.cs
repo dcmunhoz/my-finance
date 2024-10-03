@@ -1,8 +1,9 @@
-﻿using Finance.Domain.Aggregates;
+﻿using Core.Repositories;
+using Finance.Domain.Aggregates;
 
 namespace Finance.Application.Repositories;
 
-public interface ICategoryRepository
+public interface ICategoryRepository : IRepository
 {
     Task CreateCategoryAsync(Category category, CancellationToken cancellationToken = default);
 }

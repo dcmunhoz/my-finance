@@ -1,6 +1,8 @@
-﻿namespace Finance.Domain.Aggregates;
+﻿using Core.Aggregate;
 
-public class Category
+namespace Finance.Domain.Aggregates;
+
+public class Category : Entity, IAggregateRoot
 {
     public Category(Guid id, string name, string color, Guid? parentId)
     {
@@ -10,7 +12,6 @@ public class Category
         ParentId = parentId;
     }
 
-    public Guid Id { get; private set; }
     public string Name { get; private set; }    
     public string Color { get; private set; }
     public Guid? ParentId { get; private set; }

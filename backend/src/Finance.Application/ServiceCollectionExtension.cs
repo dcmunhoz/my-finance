@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
+using Notification;
 
 namespace Finance.Application;
 
@@ -11,6 +12,8 @@ public static class ServiceCollectionExtension
         {
             opt.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
         });
+
+        services.AddNotificationService();
         
         return services;
     }

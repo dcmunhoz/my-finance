@@ -7,8 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Core\Core.csproj" />
-      <ProjectReference Include="..\Core\Core.csproj" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0-rc.1.24431.7" />
     </ItemGroup>
-
 </Project>
