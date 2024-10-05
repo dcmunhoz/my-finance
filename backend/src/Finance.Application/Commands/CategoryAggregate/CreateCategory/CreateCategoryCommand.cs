@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Finance.Application.Business.Categories.CreateCategory;
+namespace Finance.Application.Commands.CategoryAggregate.CreateCategory;
 
 public record CreateCategoryCommand(string Name, 
                                     string Color, 

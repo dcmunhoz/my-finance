@@ -1,6 +1,6 @@
 ﻿using Api.Core.Responses.Error;
 using Finance.Api.Requests;
-using Finance.Application.Business.Categories.CreateCategory;
+using Finance.Application.Commands.CategoryAggregate.CreateCategory;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
