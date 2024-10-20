@@ -1,6 +1,7 @@
 ﻿using Core.Repositories;
 using Finance.Application.Repositories;
 using Finance.Domain.Aggregates;
+using Microsoft.EntityFrameworkCore;
 
 namespace Finance.Infra.Persistence.Repositories;
 
@@ -19,4 +20,7 @@ public sealed class CategoryRepository : ICategoryRepository
     {
         await _context.Categories.AddAsync(category, cancellationToken);
     }
+
+    public async Task<Category> GetByIdAsync(Guid Id, CancellationToken cancellationToken = default)
+        => await _context.Categories.FirstOrDefaultAsync(w => w.Id == Id, cancellationToken);
 }

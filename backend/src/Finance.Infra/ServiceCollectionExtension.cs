@@ -15,6 +15,9 @@ public static class ServiceCollectionExtension
         services.AddDbContext<FinanceDbContext>(opt =>
         {
             opt.UseSqlServer(configuration.GetConnectionString("SqlServer"));
+            
+            // TODO: REMOVE THIS
+            opt.LogTo(Console.WriteLine);
         });
         
         AddRepositories(services);

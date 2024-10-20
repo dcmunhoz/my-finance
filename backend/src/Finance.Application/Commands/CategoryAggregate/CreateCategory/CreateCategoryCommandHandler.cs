@@ -18,9 +18,18 @@ public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComman
     
     public async Task<Category> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
     {
-         var category = new Category(Guid.NewGuid(), request.Name, request.Color, request.ParentId);
+        if (request.ParentId.HasValue && await _categoryRepository.GetByIdAsync(request.ParentId.Value) == null)
+        {
+            _notificationHandler.WithDescription("Categoria pai informada não existe.")
+                                .Raise();
+
+            return default;
+        }
+
+        var category = new Category(Guid.NewGuid(), request.Name, request.Color, request.ParentId);
                 
         await _categoryRepository.CreateAsync(category, cancellationToken);
+        await _categoryRepository.UnitOfWork.CommitAsync(cancellationToken);
         return category;
     }
 }
