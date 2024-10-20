@@ -15,8 +15,4 @@
       <ProjectReference Include="..\Finance.Infra\Finance.Infra.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Responses\" />
-    </ItemGroup>
-
 </Project>

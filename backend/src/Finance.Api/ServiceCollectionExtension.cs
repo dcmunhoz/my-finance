@@ -7,7 +7,6 @@ public static class ServiceCollectionExtension
 {
     public static IServiceCollection AddApi(this IServiceCollection services)
     {
-        // services.AddTransient<NotificationFilter>();
         services.AddControllers(opt => 
             opt.Filters.Add(typeof(NotificationFilter)) 
         );

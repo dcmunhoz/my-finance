@@ -15,7 +15,7 @@ public sealed class CategoryRepository : ICategoryRepository
         _context = context;
     }
 
-    public async Task CreateCategoryAsync(Category category, CancellationToken cancellationToken = default)
+    public async Task CreateAsync(Category category, CancellationToken cancellationToken = default)
     {
         await _context.Categories.AddAsync(category, cancellationToken);
     }

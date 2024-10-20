@@ -5,7 +5,7 @@ using Notification;
 
 namespace Finance.Application.Commands.CategoryAggregate.CreateCategory;
 
-public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, bool>
+public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, Category>
 {
     private readonly ICategoryRepository _categoryRepository;
     private readonly INotificationHandler _notificationHandler;
@@ -16,16 +16,11 @@ public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComman
         _notificationHandler = notificationHandler;
     }
     
-    public async Task<bool> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
+    public async Task<Category> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
     {
-        var category = new Category(Guid.NewGuid(), request.Name, request.Color, request.ParentId);
-
-        // _notificationHandler.WithTitle("Teste")
-        //                     .WithDescription("Descrição XPTO")
-        //                     .Raise();
-        // return default;
-        
-        await _categoryRepository.CreateCategoryAsync(category, cancellationToken);
-        return  await _categoryRepository.UnitOfWork.CommitAsync(cancellationToken);
+         var category = new Category(Guid.NewGuid(), request.Name, request.Color, request.ParentId);
+                
+        await _categoryRepository.CreateAsync(category, cancellationToken);
+        return category;
     }
 }

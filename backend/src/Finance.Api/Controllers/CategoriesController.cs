@@ -1,5 +1,6 @@
 ﻿using Api.Core.Responses.Error;
-using Finance.Api.Requests;
+using Finance.Api.Requests.Category;
+using Finance.Api.Responses.Category;
 using Finance.Application.Commands.CategoryAggregate.CreateCategory;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Finance.Api.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/categories")]
 public class CategoriesController : ControllerBase
 { 
     private readonly IMediator _mediator;
@@ -18,12 +19,17 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpPost]
+    [ProducesResponseType(typeof(CategoryCreatedResponse), 201)]
     [ProducesResponseType(typeof(ErrorResponse), 400)]
     [ProducesResponseType(typeof(ErrorResponse), 500)]
-    public async Task<IActionResult> CreateCategoryAsyn([FromBody] CreateCategoryRequest request, CancellationToken token = default)
+    public async Task<IActionResult> CreateCategoryAsync([FromBody] CreateCategoryRequest request, CancellationToken token = default)
     {
         var command = new CreateCategoryCommand(request.Name, request.Color, request.ParentId);
-        
-        return Ok(await _mediator.Send(command, token));
+
+        var category = await _mediator.Send(command, token);
+        if (category is null)
+            return new BadRequestResult();
+
+        return Created($"/categories/{category.Id}", new CategoryCreatedResponse(category.Id));
     }
 }
