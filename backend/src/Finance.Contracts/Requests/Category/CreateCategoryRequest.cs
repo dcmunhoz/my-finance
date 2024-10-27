@@ -1,4 +1,4 @@
-﻿namespace Finance.Api.Requests.Category;
+﻿namespace Finance.Contracts.Requests.Category;
 
 public record CreateCategoryRequest(string Name,
                                     string Color,

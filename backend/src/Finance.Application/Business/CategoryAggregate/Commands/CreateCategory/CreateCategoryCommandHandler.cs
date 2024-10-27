@@ -3,7 +3,7 @@ using Finance.Domain.Aggregates;
 using MediatR;
 using Notification;
 
-namespace Finance.Application.Commands.CategoryAggregate.CreateCategory;
+namespace Finance.Application.Business.CategoryAggregate.Commands.CreateCategory;
 
 public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, Category>
 {

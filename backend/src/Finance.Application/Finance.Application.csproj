@@ -14,8 +14,13 @@
     <ItemGroup>
       <ProjectReference Include="..\Api.Core\Api.Core.csproj" />
       <ProjectReference Include="..\Core\Core.csproj" />
+      <ProjectReference Include="..\Finance.Contracts\Finance.Contracts.csproj" />
       <ProjectReference Include="..\Finance.Domain\Finance.Domain.csproj" />
       <ProjectReference Include="..\Notification\Notification.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Business\CategoryAggregate\Commands\" />
     </ItemGroup>
 
 </Project>

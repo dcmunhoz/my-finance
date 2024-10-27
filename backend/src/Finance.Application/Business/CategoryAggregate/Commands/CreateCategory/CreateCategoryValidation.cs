@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Finance.Application.Commands.CategoryAggregate.CreateCategory;
+namespace Finance.Application.Business.CategoryAggregate.Commands.CreateCategory;
 public class CreateCategoryValidation : AbstractValidator<CreateCategoryCommand>
 {
     public CreateCategoryValidation()

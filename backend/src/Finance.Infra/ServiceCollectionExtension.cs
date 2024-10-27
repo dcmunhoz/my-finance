@@ -1,5 +1,7 @@
-﻿using Finance.Application.Repositories;
+﻿using Finance.Application.Queries;
+using Finance.Application.Repositories;
 using Finance.Infra.Persistence;
+using Finance.Infra.Persistence.Queries;
 using Finance.Infra.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -20,13 +22,19 @@ public static class ServiceCollectionExtension
             opt.LogTo(Console.WriteLine);
         });
         
-        AddRepositories(services);
+        services.AddRepositories();
+        services.AddQueries();
         
         return services;
     }
 
-    private static void AddRepositories(IServiceCollection services)
+    private static void AddRepositories(this IServiceCollection services)
     {
         services.AddTransient<ICategoryRepository, CategoryRepository>();
+    }
+
+    private static void AddQueries(this IServiceCollection services)
+    {
+        services.AddTransient<ICategoryQuery, CategoryQuery>();
     }
 }

@@ -1,7 +1,8 @@
 ﻿using Api.Core.Responses.Error;
-using Finance.Api.Requests.Category;
-using Finance.Api.Responses.Category;
-using Finance.Application.Commands.CategoryAggregate.CreateCategory;
+using Finance.Application.Business.CategoryAggregate.Commands.CreateCategory;
+using Finance.Application.Queries;
+using Finance.Contracts.Requests.Category;
+using Finance.Contracts.Responses.Category;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,17 +13,19 @@ namespace Finance.Api.Controllers;
 public class CategoriesController : ControllerBase
 { 
     private readonly IMediator _mediator;
-    
-    public CategoriesController(IMediator mediator)
+    private readonly ICategoryQuery _categoryQuery;
+
+    public CategoriesController(IMediator mediator, ICategoryQuery categoryQuery)
     {
         _mediator = mediator;
+        _categoryQuery = categoryQuery;
     }
 
     [HttpPost]
     [ProducesResponseType(typeof(CategoryCreatedResponse), 201)]
     [ProducesResponseType(typeof(ErrorResponse), 400)]
     [ProducesResponseType(typeof(ErrorResponse), 500)]
-    public async Task<IActionResult> CreateCategoryAsync([FromBody] CreateCategoryRequest request, CancellationToken token = default)
+    public async Task<IActionResult> CreateAsync([FromBody] CreateCategoryRequest request, CancellationToken token = default)
     {
         var command = new CreateCategoryCommand(request.Name, request.Color, request.ParentId);
 
@@ -31,5 +34,15 @@ public class CategoriesController : ControllerBase
             return new BadRequestResult();
 
         return Created($"/categories/{category.Id}", new CategoryCreatedResponse(category.Id));
+    }
+
+    [HttpGet("{Id}")]
+    public async Task<IActionResult> GetByIdAsync(Guid Id, CancellationToken cancellationToken = default)
+    {
+        var result = await _categoryQuery.GetByIdAsync(Id);
+        if (result is null)
+            return NotFound();
+
+        return Ok(result);
     }
 }

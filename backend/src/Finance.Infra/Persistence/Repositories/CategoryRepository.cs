@@ -8,7 +8,6 @@ namespace Finance.Infra.Persistence.Repositories;
 public sealed class CategoryRepository : ICategoryRepository
 {
     private readonly FinanceDbContext _context;
-    
     public IUnitOfWork UnitOfWork => _context;
     
     public CategoryRepository(FinanceDbContext context)
@@ -21,6 +20,6 @@ public sealed class CategoryRepository : ICategoryRepository
         await _context.Categories.AddAsync(category, cancellationToken);
     }
 
-    public async Task<Category> GetByIdAsync(Guid Id, CancellationToken cancellationToken = default)
-        => await _context.Categories.FirstOrDefaultAsync(w => w.Id == Id, cancellationToken);
+    public async Task<Category> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        => await _context.Categories.FirstOrDefaultAsync(w => w.Id == id, cancellationToken);
 }

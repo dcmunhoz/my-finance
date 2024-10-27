@@ -31,5 +31,9 @@ public class CategoryMap : IEntityTypeConfiguration<Category>
             .HasColumnName("PARENTID")
             .HasColumnType("UNIQUEIDENTIFIER")
             .IsRequired(false);
+
+        builder.HasMany(p => p.Childrens)
+            .WithOne()
+            .HasForeignKey(p => p.ParentId);
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using Finance.Application.Commands.CategoryAggregate.CreateCategory;
+using Finance.Application.Business.CategoryAggregate.Commands.CreateCategory;
 using Finance.Application.Pipeline;
 using FluentValidation;
 using MediatR;
