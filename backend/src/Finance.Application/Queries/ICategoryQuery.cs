@@ -4,5 +4,6 @@ namespace Finance.Application.Queries;
 
 public interface ICategoryQuery
 {
-    Task<CategoryResponse?> GetByIdAsync(Guid id);
+    Task<CategoryResponse?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<IEnumerable<CategoryResponse>> GetAllAsync(CancellationToken cancellationToken = default); 
 }
