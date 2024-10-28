@@ -1,6 +1,6 @@
 using Finance.Api;
 using Finance.Application;
-using Finance.Infra;
+using Finance.Infra.Data;
 
 // Services
 var builder = WebApplication.CreateBuilder(args);

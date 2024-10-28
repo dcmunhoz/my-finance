@@ -25,7 +25,7 @@ public class CategoriesController : ControllerBase
     [ProducesResponseType(typeof(CategoryCreatedResponse), 201)]
     [ProducesResponseType(typeof(ErrorResponse), 400)]
     [ProducesResponseType(typeof(ErrorResponse), 500)]
-    public async Task<IActionResult> CreateAsync([FromBody] CreateCategoryRequest request, CancellationToken token = default)
+    public async Task<IActionResult> Create([FromBody] CreateCategoryRequest request, CancellationToken token = default)
     {
         var command = new CreateCategoryCommand(request.Name, request.Color, request.ParentId);
 
@@ -33,13 +33,13 @@ public class CategoriesController : ControllerBase
         if (category is null)
             return new BadRequestResult();
 
-        return Created($"/categories/{category.Id}", new CategoryCreatedResponse(category.Id));
+        return CreatedAtAction(nameof(GetById), new { id = category.Id }, CategoryCreatedResponse.MapFrom(category));
     }
 
-    [HttpGet("{Id}")]
-    public async Task<IActionResult> GetByIdAsync(Guid Id, CancellationToken cancellationToken = default)
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetById(Guid id, CancellationToken cancellationToken = default)
     {
-        var result = await _categoryQuery.GetByIdAsync(Id);
+        var result = await _categoryQuery.GetByIdAsync(id);
         if (result is null)
             return NotFound();
 

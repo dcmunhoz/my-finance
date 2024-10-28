@@ -1,13 +1,12 @@
 ﻿using Finance.Application.Queries;
 using Finance.Application.Repositories;
-using Finance.Infra.Persistence;
-using Finance.Infra.Persistence.Queries;
-using Finance.Infra.Persistence.Repositories;
+using Finance.Infra.Data.Queries;
+using Finance.Infra.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Finance.Infra;
+namespace Finance.Infra.Data;
 
 public static class ServiceCollectionExtension
 {

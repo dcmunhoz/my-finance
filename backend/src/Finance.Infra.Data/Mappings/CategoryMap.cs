@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Finance.Infra.Persistence.Mappings;
+namespace Finance.Infra.Data.Mappings;
 
 public class CategoryMap : IEntityTypeConfiguration<Category>
 {

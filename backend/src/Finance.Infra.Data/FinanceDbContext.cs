@@ -1,19 +1,13 @@
-﻿using System.Reflection;
-using Core.Repositories;
+﻿using Core.Repositories;
 using Finance.Domain.Aggregates;
-using Finance.Infra.Persistence.Mappings;
+using Finance.Infra.Data.Mappings;
 using Microsoft.EntityFrameworkCore;
 
-namespace Finance.Infra.Persistence;
+namespace Finance.Infra.Data;
 
-public class FinanceDbContext : DbContext, IUnitOfWork
+public class FinanceDbContext(DbContextOptions<FinanceDbContext> options) : DbContext(options), IUnitOfWork
 {
     public DbSet<Category> Categories { get; init; }
-    
-    public FinanceDbContext(DbContextOptions<FinanceDbContext> options) : base(options) 
-    {
-        
-    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

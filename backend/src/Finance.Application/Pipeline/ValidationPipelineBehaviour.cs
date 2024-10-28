@@ -1,10 +1,9 @@
-﻿using Core.Messages;
-using FluentValidation;
+﻿using FluentValidation;
 using MediatR;
 using Notification;
 
 namespace Finance.Application.Pipeline;
-public class ValidationPipelineBehaviour<TRequest, TResult> : IPipelineBehavior<TRequest, TResult?> where TRequest : IMessage
+public class ValidationPipelineBehaviour<TRequest, TResult> : IPipelineBehavior<TRequest, TResult?> where TRequest : IRequest<TResult>
 {
     private readonly IValidator<TRequest> _validator;
     private readonly INotificationHandler _notification;

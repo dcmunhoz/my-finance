@@ -5,7 +5,7 @@ using Notification;
 
 namespace Finance.Application.Business.CategoryAggregate.Commands.CreateCategory;
 
-public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, Category>
+public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, Category?>
 {
     private readonly ICategoryRepository _categoryRepository;
     private readonly INotificationHandler _notificationHandler;
@@ -16,9 +16,9 @@ public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComman
         _notificationHandler = notificationHandler;
     }
     
-    public async Task<Category> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
+    public async Task<Category?> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
     {
-        if (request.ParentId.HasValue && await _categoryRepository.GetByIdAsync(request.ParentId.Value) == null)
+        if (request.ParentId.HasValue && await _categoryRepository.GetByIdAsync(request.ParentId.Value, cancellationToken) is null )
         {
             _notificationHandler.WithDescription("Categoria pai informada não existe.")
                                 .Raise();

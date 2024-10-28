@@ -1,9 +1,8 @@
 ﻿using Finance.Application.Queries;
 using Finance.Contracts.Responses.Category;
-using Finance.Domain.Aggregates;
 using Microsoft.EntityFrameworkCore;
 
-namespace Finance.Infra.Persistence.Queries;
+namespace Finance.Infra.Data.Queries;
 
 public sealed class CategoryQuery(FinanceDbContext dbContext) : ICategoryQuery
 {
