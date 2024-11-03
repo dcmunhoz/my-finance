@@ -19,8 +19,4 @@
       <ProjectReference Include="..\Notification\Notification.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Business\CategoryAggregate\Commands\" />
-    </ItemGroup>
-
 </Project>

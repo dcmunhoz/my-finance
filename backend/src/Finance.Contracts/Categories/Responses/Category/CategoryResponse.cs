@@ -1,4 +1,4 @@
-﻿namespace Finance.Contracts.Responses.Category;
+﻿namespace Finance.Contracts.Categories.Responses.Category;
 
 public sealed record CategoryResponse(Guid Id,
                                       string Name,

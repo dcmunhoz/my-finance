@@ -1,4 +1,4 @@
-﻿using Finance.Contracts.Responses.Category;
+﻿using Finance.Contracts.Categories.Responses.Category;
 
 namespace Finance.Application.Queries;
 

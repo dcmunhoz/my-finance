@@ -10,4 +10,8 @@
       <ProjectReference Include="..\Finance.Domain\Finance.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Categories\" />
+    </ItemGroup>
+
 </Project>

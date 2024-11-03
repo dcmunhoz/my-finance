@@ -1,8 +1,9 @@
 ﻿using Api.Core.Responses.Error;
 using Finance.Application.Business.CategoryAggregate.Commands.CreateCategory;
+using Finance.Application.Business.CategoryAggregate.Commands.UpdateCategory;
 using Finance.Application.Queries;
-using Finance.Contracts.Requests.Category;
-using Finance.Contracts.Responses.Category;
+using Finance.Contracts.Categories.Requests.Category;
+using Finance.Contracts.Categories.Responses.Category;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -47,5 +48,12 @@ public class CategoriesController(IMediator mediator, ICategoryQuery categoryQue
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> GetAll(CancellationToken cancellationToken = default)
         => Ok(await categoryQuery.GetAllAsync(cancellationToken));
-    
+
+    // [HttpPut("{id:guid}")]
+    // public async Task<IActionResult> Update(Guid id, [FromBody] UpdateCategoryRequest request, CancellationToken cancellationToken = default)
+    // {
+    //     var command = new UpdateCategoryCommand(id, request.Name, request.Color);
+    //     
+    //     var result = await mediator.Send(command, cancellationToken);
+    // }
 }

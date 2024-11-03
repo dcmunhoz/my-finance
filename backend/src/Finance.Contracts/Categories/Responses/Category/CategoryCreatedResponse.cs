@@ -1,4 +1,4 @@
-﻿namespace Finance.Contracts.Responses.Category;
+﻿namespace Finance.Contracts.Categories.Responses.Category;
 
 public record CategoryCreatedResponse(Guid CategoryId)
 {
