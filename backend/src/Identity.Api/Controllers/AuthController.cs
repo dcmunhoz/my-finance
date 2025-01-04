@@ -1,17 +1,17 @@
-using Auth.Api.Data.Context;
-using Auth.Api.Models;
-using Auth.Api.Requests;
+using Identity.Api.Data.Context;
+using Identity.Api.Models;
+using Identity.Api.Requests;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Auth.Api.Controllers;
+namespace Identity.Api.Controllers;
 
 [ApiController]
 [Route("api/auth")]
 public class AuthController : ControllerBase
 {
-    private readonly AuthDbContext _context;
+    private readonly IdentityDbContext _context;
     
-    public AuthController(AuthDbContext context)
+    public AuthController(IdentityDbContext context)
     {
         _context = context;
     }

@@ -1,8 +1,8 @@
-using Auth.Api.Models;
+using Identity.Api.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Auth.Api.Data.Mappings;
+namespace Identity.Api.Data.Mappings;
 
 public class UserMap : IEntityTypeConfiguration<User>
 {

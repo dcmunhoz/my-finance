@@ -1,4 +1,4 @@
-namespace Auth.Api.Models;
+namespace Identity.Api.Models;
 
 public class User
 {
