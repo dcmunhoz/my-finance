@@ -19,28 +19,39 @@ public class IdentityController : ControllerBase
     }
     
     [HttpPost("register")]
-    public async Task<IActionResult> RegisterUser([FromBody] RegisterUserRequest request)
+    public async Task<IActionResult> RegisterUserAsync([FromBody] RegisterUserRequest request, CancellationToken cancellationToken)
     {
-        if (await _context.Users.AnyAsync(w => w.Username.Trim().Equals(request.Username.Trim())))
-            return BadRequest(new ErrorResponse
-            {
-                Id = this.GetType().FullName ?? "",
-                Title = "User already exists",
-                Message = "This user already exists, try another one."
-            });
+        RegisterUserRequestValidation validation = new();
+        var result = await validation.ValidateAsync(request, cancellationToken);
 
-        if (await _context.Users.AnyAsync(w => w.Email.Trim().Equals(request.Email.Trim())))
+        if (!result.IsValid)
+        {
+            var response = new ErrorResponse
+            {
+                Id = nameof(RegisterUserAsync),
+                Title = "Validations errors occurred",
+                Details =  result.Errors.Select(s => new ErrorDetailsResponse
+                {
+                    Title = s.ErrorCode,
+                    Message = s.ErrorMessage
+                })
+            };
+
+            return BadRequest(response);
+        }
+
+        if (await _context.Users.AnyAsync(w => w.Email.Trim().Equals(request.Email.Trim()), cancellationToken))
             return BadRequest(new ErrorResponse
             {
                 Id = this.GetType().FullName ?? "",
                 Title = "E-mail already exists",
-                Message = "This e-mail is already registred. If you forget your password try to recovery."
+                Message = "This e-mail is already registered. If you forget your password try to recovery."
             });
         
-        User user = new User(request.Username, request.Name, request.Email);
+        User user = new(request.Name, request.Email, request.Password);
         
-        await _context.Users.AddAsync(user);
-        await _context.SaveChangesAsync();
+        await _context.Users.AddAsync(user, cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
         
         return Created("/api/auth/login", user);
     }

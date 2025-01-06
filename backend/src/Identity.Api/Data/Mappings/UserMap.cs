@@ -15,9 +15,6 @@ public class UserMap : IEntityTypeConfiguration<User>
         builder.Property(p => p.Id)
             .HasColumnName("ID");
 
-        builder.Property(p => p.Username)
-            .HasColumnName("USERNAME");
-
         builder.Property(p => p.Name)
             .HasColumnName("NAME");
 
