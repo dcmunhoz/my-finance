@@ -2,6 +2,7 @@ using Common.Api.Response;
 using Identity.Api.Data.Context;
 using Identity.Api.Models;
 using Identity.Api.Requests;
+using Identity.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,10 +13,12 @@ namespace Identity.Api.Controllers;
 public class IdentityController : ControllerBase
 {
     private readonly IdentityDbContext _context;
+    private readonly HashService _hashService;
     
-    public IdentityController(IdentityDbContext context)
+    public IdentityController(IdentityDbContext context, HashService hashService)
     {
         _context = context;
+        _hashService = hashService;
     }
     
     [HttpPost("register")]
@@ -29,10 +32,10 @@ public class IdentityController : ControllerBase
             var response = new ErrorResponse
             {
                 Id = nameof(RegisterUserAsync),
-                Title = "Validations errors occurred",
+                Title = "Validation errors occurred",
                 Details =  result.Errors.Select(s => new ErrorDetailsResponse
                 {
-                    Title = s.ErrorCode,
+                    Title = s.PropertyName,
                     Message = s.ErrorMessage
                 })
             };
@@ -48,11 +51,11 @@ public class IdentityController : ControllerBase
                 Message = "This e-mail is already registered. If you forget your password try to recovery."
             });
         
-        User user = new(request.Name, request.Email, request.Password);
+        User user = new(request.Name, request.Email, _hashService.GetStringHash(request.Password));
         
         await _context.Users.AddAsync(user, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
         
-        return Created("/api/auth/login", user);
+        return Created("/api/auth/login", user.Id);
     }
 }

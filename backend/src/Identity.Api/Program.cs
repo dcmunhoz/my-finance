@@ -1,9 +1,12 @@
 using Identity.Api.Data.Context;
+using Identity.Api.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddTransient<HashService>();
+
 builder.Services.AddDbContext<IdentityDbContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
 

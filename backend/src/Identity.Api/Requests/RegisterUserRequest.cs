@@ -10,7 +10,7 @@ public class RegisterUserRequestValidation : AbstractValidator<RegisterUserReque
     {
         RuleFor(x => x.Name)
             .NotEmpty().WithMessage("Name must be specified.")
-            .MaximumLength(16).WithMessage("Name must have maximum 255 characters.")
+            .MaximumLength(255).WithMessage("Name must have maximum 255 characters.")
             .MinimumLength(3).WithMessage("Name must have at least 3 characters.");
 
         RuleFor(x => x.Email)

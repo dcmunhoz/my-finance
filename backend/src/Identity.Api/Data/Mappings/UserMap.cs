@@ -20,5 +20,8 @@ public class UserMap : IEntityTypeConfiguration<User>
 
         builder.Property(p => p.Email)
             .HasColumnName("EMAIL");
+        
+        builder.Property(p => p.Password)
+            .HasColumnName("PASSWORD");
     }
 }

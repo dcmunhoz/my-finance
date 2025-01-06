@@ -7,6 +7,7 @@ public class User
         Id = Guid.NewGuid();
         Name = name;
         Email = email;
+        Password = password;
     }
 
     public Guid Id { get; private set; }
