@@ -16,6 +16,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Common.Api\Common.Api.csproj" />
+      <ProjectReference Include="..\BaseAuthentication\BaseAuthentication.csproj" />
     </ItemGroup>
 
 </Project>

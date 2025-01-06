@@ -1,3 +1,4 @@
+using BaseAuthentication;
 using Identity.Api.Data.Context;
 using Identity.Api.Services;
 using Microsoft.EntityFrameworkCore;
@@ -5,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddBaseAuthentication(builder.Configuration);
+
 builder.Services.AddTransient<HashService>();
 
 builder.Services.AddDbContext<IdentityDbContext>(options => 
