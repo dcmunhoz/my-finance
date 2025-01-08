@@ -1,0 +1,18 @@
+<div class="page-container">
+    <mf-container>
+        <form [formGroup]="form" class="form-container">
+            <h1>Register</h1>
+            <input formControlName="email" placeholder="email" type="text">
+            <input formControlName="name" placeholder="nome" type="text">
+            <input formControlName="password" placeholder="senha" type="password">
+            <input formControlName="confirmationPassword" placeholder="confirmar senha" type="password">
+
+            <button (click)="onClick()">Novo usuário</button>
+
+            <br />
+            <br />
+            
+            <span>Já tem uma conta? Faça login <a routerLink="/login">aqui</a>. </span>
+        </form >
+    </mf-container>
+</div>

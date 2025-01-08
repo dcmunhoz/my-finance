@@ -1,0 +1,8 @@
+<button
+    [ngClass]="[
+        'mf-button-kind-' + kind(),
+        'mf-button-type-' + type()
+    ]"
+>
+    <ng-content></ng-content>
+</button>
