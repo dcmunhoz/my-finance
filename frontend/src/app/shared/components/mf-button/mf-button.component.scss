@@ -1,11 +1,18 @@
 button {
     background-color: #FFF;
     width: 100%;
+    margin: 5px;
     padding: 10px;
     font-weight: bold;
     border-radius: 5px;
     border: 2px solid;
     cursor: pointer;
+
+    transition: opacity 50ms;
+}
+
+button:hover {
+    opacity: .9;
 }
 
 button.mf-button-kind-default {

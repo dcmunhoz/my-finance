@@ -5,17 +5,15 @@
             
             <br />
 
-            <label for="email">E-mail</label>
-            <input name="email" id="email" type="text">
+            <mf-input p-lable="Bilu" [p-type]="inputTypeEnum.Text" />
 
             <br />
             
-            <label for="password">Senha</label>
-            <input name="password" id="password" type="password">
+            <mf-input p-lable="Bilau" [p-type]="inputTypeEnum.Password" />
             
             <br />
         
-            <mf-button >Acessar</mf-button>
+            <mf-button [p-kind]="buttonKindEnum.Success">Acessar</mf-button>
 
             <br />
             <br />

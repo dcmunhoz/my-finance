@@ -2,13 +2,12 @@
     <mf-container>
         <form [formGroup]="form" class="form-container">
             <h1>Register</h1>
-            <input formControlName="email" placeholder="email" type="text">
-            <input formControlName="name" placeholder="nome" type="text">
-            <input formControlName="password" placeholder="senha" type="password">
-            <input formControlName="confirmationPassword" placeholder="confirmar senha" type="password">
-
-            <button (click)="onClick()">Novo usuário</button>
-
+            <mf-input formControlName="email" p-placeholder="E-mail" [p-error]="true" p-lable="E-mail" p-detail="Eitaaaaa" ></mf-input>
+            <mf-input formControlName="name" p-placeholder="Nome" ></mf-input>
+            <mf-input formControlName="password" p-placeholder="Senha" ></mf-input>
+            <mf-input formControlName="confirmationPassword" p-placeholder="Confirmar senha" ></mf-input>
+            <mf-button (p-onclick)="registerUser()" >Registre-se</mf-button>
+  
             <br />
             <br />
             

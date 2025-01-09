@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, input } from "@angular/core";
+import { Component, input, output } from "@angular/core";
 
 export enum MFButtonKindEnum {
     Default = "default",
@@ -20,6 +20,11 @@ export enum MFButtonTypeEnum {
     imports: [ CommonModule ]
 })
 export class MFButtonComponent {
+    public click = output({ alias: 'p-onclick' })
     public kind = input(MFButtonKindEnum.Default, { alias: "p-kind" });
     public type = input(MFButtonTypeEnum.Primary, { alias: "p-type" });
+
+    protected onClick(): void {
+        this.click.emit();
+    }
 }

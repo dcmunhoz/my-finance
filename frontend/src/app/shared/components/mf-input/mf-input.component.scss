@@ -1,0 +1,37 @@
+div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+
+    label {
+        position: relative;
+        margin-bottom: 5px; 
+    }
+
+    &.has-error {
+        
+        label, span {
+            color: var(--primary-red);
+        }
+
+        input {
+            border-color: var(--primary-red);
+        }
+
+        span {
+            font-size: 12px;
+            padding-left: 10px;
+            padding-top: 5px;
+        }
+    }
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid;
+    outline: none;
+}
+
