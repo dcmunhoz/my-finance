@@ -1,26 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-    --default-white: #FFFFFF;
-    --default-text-color: #3A3A3A;
+  --default-white: #ffffff;
+  --default-text-color: #3a3a3a;
 
-    --primary-blue: #3D96E9;
-    --primary-red: #EA5B5B;
-    --primary-green: #45BB6E;
+  --primary-blue: #3d96e9;
+  --primary-red: #ea5b5b;
+  --primary-green: #45bb6e;
 }
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    position: relative;
-    color: var(--default-text-color);
-    font-family: 'Arial';
-    font-size: 16px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+  color: var(--default-text-color);
+  font-family: 'Arial';
+  font-size: 16px;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    background-color: #F4F7FE;
-    font-size: 20px;
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #f4f7fe;
+  font-size: 20px;
 }

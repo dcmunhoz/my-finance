@@ -1,11 +1,14 @@
-<div 
-    [class.has-error]="hasError()"
->
-    @if (label() !== "" ) {
-        <label [for]="inputId">{{label()}}</label>
-    }
-    <input [formControl]="formControl" [id]="inputId" [type]="type()" [placeholder]="placeholder()" />
-    @if (detail() !== "") {
-        <span>{{detail()}}</span>
-    }
+<div [class.has-error]="hasError()">
+  @if (label() !== '') {
+    <label [for]="inputId">{{ label() }}</label>
+  }
+  <input
+    [formControl]="formControl"
+    [id]="inputId"
+    [type]="type()"
+    [placeholder]="placeholder()"
+  />
+  @if (detail() !== '') {
+    <span>{{ detail() }}</span>
+  }
 </div>

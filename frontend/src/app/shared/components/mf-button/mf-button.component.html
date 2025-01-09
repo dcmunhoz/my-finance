@@ -1,10 +1,6 @@
 <button
-    [ngClass]="[
-        'mf-button-kind-' + kind(),
-        'mf-button-type-' + type()
-    ]"
-
-    (click)="onClick()"
+  [ngClass]="['mf-button-kind-' + kind(), 'mf-button-type-' + type()]"
+  (click)="onClick()"
 >
-    <ng-content></ng-content>
+  <ng-content></ng-content>
 </button>

@@ -1,30 +1,30 @@
-import { CommonModule } from "@angular/common";
-import { Component, input, output } from "@angular/core";
+import { CommonModule } from '@angular/common';
+import { Component, input, output } from '@angular/core';
 
 export enum MFButtonKindEnum {
-    Default = "default",
-    Danger = "danger",
-    Success = "success"
+  Default = 'default',
+  Danger = 'danger',
+  Success = 'success',
 }
 
 export enum MFButtonTypeEnum {
-    Primary = "primary",
-    Secondary = "secondary",
-    Tertiary = "tertiary"
+  Primary = 'primary',
+  Secondary = 'secondary',
+  Tertiary = 'tertiary',
 }
 
 @Component({
-    selector: "mf-button",
-    templateUrl: "./mf-button.component.html",
-    styleUrls: ["./mf-button.component.scss"],
-    imports: [ CommonModule ]
+  selector: 'mf-button',
+  templateUrl: './mf-button.component.html',
+  styleUrls: ['./mf-button.component.scss'],
+  imports: [CommonModule],
 })
 export class MFButtonComponent {
-    public click = output({ alias: 'p-onclick' })
-    public kind = input(MFButtonKindEnum.Default, { alias: "p-kind" });
-    public type = input(MFButtonTypeEnum.Primary, { alias: "p-type" });
+  public clickEvent = output({ alias: 'p-onclick' });
+  public kind = input(MFButtonKindEnum.Default, { alias: 'p-kind' });
+  public type = input(MFButtonTypeEnum.Primary, { alias: 'p-type' });
 
-    protected onClick(): void {
-        this.click.emit();
-    }
+  protected onClick(): void {
+    this.clickEvent.emit();
+  }
 }

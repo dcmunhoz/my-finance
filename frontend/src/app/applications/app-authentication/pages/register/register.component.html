@@ -1,17 +1,35 @@
 <div class="page-container">
-    <mf-container>
-        <form [formGroup]="form" class="form-container">
-            <h1>Register</h1>
-            <mf-input formControlName="email" p-placeholder="E-mail" [p-error]="true" p-lable="E-mail" p-detail="Eitaaaaa" ></mf-input>
-            <mf-input formControlName="name" p-placeholder="Nome" ></mf-input>
-            <mf-input formControlName="password" p-placeholder="Senha" ></mf-input>
-            <mf-input formControlName="confirmationPassword" p-placeholder="Confirmar senha" ></mf-input>
-            <mf-button (p-onclick)="registerUser()" >Registre-se</mf-button>
-  
-            <br />
-            <br />
-            
-            <span>Já tem uma conta? Faça login <a routerLink="/login">aqui</a>. </span>
-        </form >
-    </mf-container>
+  <mf-container>
+    <form
+      [formGroup]="form"
+      class="form-container"
+    >
+      <h1>Register</h1>
+      <mf-input
+        formControlName="email"
+        p-placeholder="E-mail"
+        [p-error]="true"
+        p-lable="E-mail"
+        p-detail="Eitaaaaa"
+      ></mf-input>
+      <mf-input
+        formControlName="name"
+        p-placeholder="Nome"
+      ></mf-input>
+      <mf-input
+        formControlName="password"
+        p-placeholder="Senha"
+      ></mf-input>
+      <mf-input
+        formControlName="confirmationPassword"
+        p-placeholder="Confirmar senha"
+      ></mf-input>
+      <mf-button (p-onclick)="registerUser()">Registre-se</mf-button>
+
+      <br />
+      <br />
+
+      <span>Já tem uma conta? Faça login <a routerLink="/login">aqui</a>. </span>
+    </form>
+  </mf-container>
 </div>

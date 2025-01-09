@@ -1,10 +1,8 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "mf-container",
-    templateUrl: "./mf-container.component.html",
-    styleUrls: ["./mf-container.component.scss"]
+  selector: 'mf-container',
+  templateUrl: './mf-container.component.html',
+  styleUrls: ['./mf-container.component.scss'],
 })
-export class MFContainerComponent {
- 
-}
+export class MFContainerComponent {}

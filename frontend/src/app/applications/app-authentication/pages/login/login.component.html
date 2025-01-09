@@ -1,24 +1,30 @@
 <div class="login-page-container">
-    <mf-container >
-        <div class="login-form-container">
-            <h1>Login</h1>
-            
-            <br />
+  <mf-container>
+    <div class="login-form-container">
+      <h1>Login</h1>
 
-            <mf-input p-lable="Bilu" [p-type]="inputTypeEnum.Text" />
+      <br />
 
-            <br />
-            
-            <mf-input p-lable="Bilau" [p-type]="inputTypeEnum.Password" />
-            
-            <br />
-        
-            <mf-button [p-kind]="buttonKindEnum.Success">Acessar</mf-button>
+      <mf-input
+        p-lable="Bilu"
+        [p-type]="inputTypeEnum.Text"
+      />
 
-            <br />
-            <br />
+      <br />
 
-            <span>Ainda não tem uma conta? Cadastre-se <a routerLink="/register">aqui</a>. </span>
-        </div>
-    </mf-container>    
+      <mf-input
+        p-lable="Bilau"
+        [p-type]="inputTypeEnum.Password"
+      />
+
+      <br />
+
+      <mf-button [p-kind]="buttonKindEnum.Success">Acessar</mf-button>
+
+      <br />
+      <br />
+
+      <span>Ainda não tem uma conta? Cadastre-se <a routerLink="/register">aqui</a>. </span>
+    </div>
+  </mf-container>
 </div>
