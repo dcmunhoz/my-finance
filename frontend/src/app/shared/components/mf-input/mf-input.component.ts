@@ -34,7 +34,7 @@ export class MFInputComponent implements ControlValueAccessor {
   public type = input<MFInputTypeEnum>(MFInputTypeEnum.Text, { alias: 'p-type' });
   public placeholder = input<string>('', { alias: 'p-placeholder' });
   public hasError = input<boolean>(false, { alias: 'p-error' });
-  public detail = input<string>('', { alias: 'p-detail' });
+  public errorDetail = input<string>('', { alias: 'p-error-detail' });
   public valueChanged = output();
 
   public formControl: FormControl;

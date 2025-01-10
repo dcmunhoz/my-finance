@@ -1,0 +1,6 @@
+@for (notification of notifications$ | async; track notification.id) {
+  <mf-notification
+    [p-notification]="notification"
+    (p-click)="removed($event)"
+  ></mf-notification>
+}

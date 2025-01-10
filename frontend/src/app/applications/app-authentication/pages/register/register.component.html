@@ -1,28 +1,45 @@
 <div class="page-container">
   <mf-container>
     <form
-      [formGroup]="form"
+      [formGroup]="formRegister"
       class="form-container"
     >
       <h1>Register</h1>
       <mf-input
         formControlName="email"
         p-placeholder="E-mail"
-        [p-error]="true"
         p-lable="E-mail"
-        p-detail="Eitaaaaa"
+        [p-error]="!!formRegister.controls.email.errors && !!formRegister.errors"
+        [p-error-detail]="
+          formRegister.controls.email.hasError('required') ? 'Campo obrigatório' : ''
+        "
       ></mf-input>
       <mf-input
         formControlName="name"
         p-placeholder="Nome"
+        p-lable="Nome"
+        [p-error]="!!formRegister.controls.name.errors && !!formRegister.errors"
+        [p-error-detail]="
+          formRegister.controls.email.hasError('required') ? 'Campo obrigatório' : ''
+        "
       ></mf-input>
       <mf-input
         formControlName="password"
         p-placeholder="Senha"
+        p-lable="Senha"
+        [p-error]="!!formRegister.controls.password.errors && !!formRegister.errors"
+        [p-error-detail]="
+          formRegister.controls.password.hasError('required') ? 'Campo obrigatório' : ''
+        "
       ></mf-input>
       <mf-input
         formControlName="confirmationPassword"
         p-placeholder="Confirmar senha"
+        p-lable="Senha"
+        [p-error]="!!formRegister.controls.confirmationPassword.errors && !!formRegister.errors"
+        [p-error-detail]="
+          formRegister.controls.confirmationPassword.hasError('required') ? 'Campo obrigatório' : ''
+        "
       ></mf-input>
       <mf-button (p-onclick)="registerUser()">Registre-se</mf-button>
 

@@ -8,7 +8,7 @@
     [type]="type()"
     [placeholder]="placeholder()"
   />
-  @if (detail() !== '') {
-    <span>{{ detail() }}</span>
+  @if (hasError() && errorDetail() !== '') {
+    <span>{{ errorDetail() }}</span>
   }
 </div>

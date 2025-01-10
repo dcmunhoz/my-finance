@@ -6,6 +6,7 @@ import { RegisterUserRequest } from '../../services/requests/register-user-reque
 import { RouterLink } from '@angular/router';
 import { MFButtonComponent } from '../../../../shared/components/mf-button/mf-button.component';
 import { MFInputComponent } from '../../../../shared/components/mf-input/mf-input.component';
+import { MFNotificationService } from '../../../../shared/components/mf-notification-wrapper/service/mf-notification.service';
 
 @Component({
   selector: 'app-register',
@@ -18,24 +19,50 @@ import { MFInputComponent } from '../../../../shared/components/mf-input/mf-inpu
     ReactiveFormsModule,
     RouterLink,
   ],
-  providers: [IdentityService],
 })
 export class RegisterComponent {
   private readonly _identityService = inject(IdentityService);
   private readonly _fb = inject(FormBuilder);
+  private readonly _notificationService = inject(MFNotificationService);
 
-  protected form = this._fb.group({
+  protected formRegister = this._fb.group({
     email: ['', Validators.required],
-    name: ['', [Validators.required, Validators.minLength(10)]],
+    name: ['', Validators.required],
     password: ['', Validators.required],
-    confirmationPassword: ['', Validators.required],
+    confirmationPassword: ['', [Validators.required]],
   });
 
   protected registerUser(): void {
-    console.log(this.form.value);
+    const random = Math.floor(Math.random() * 3) + 1;
+
+    switch (random) {
+      case 1:
+        this._notificationService.success(
+          'Success Notification',
+          'This is a random success message',
+        );
+        break;
+      case 2:
+        this._notificationService.warning(
+          'Warning Notification',
+          'This is a random warning message',
+        );
+        break;
+      case 3:
+        this._notificationService.error('Error Notification', 'This is a random error message');
+        break;
+    }
+
     return;
 
-    const request = this.form.value as RegisterUserRequest;
+    this.formRegister.setErrors(null);
+
+    if (this.formRegister.invalid) {
+      this.formRegister.setErrors({ hasError: true });
+      return;
+    }
+
+    const request = this.formRegister.value as RegisterUserRequest;
     this._identityService.registerUser(request).subscribe({
       next: (response) => {
         console.log(response);
