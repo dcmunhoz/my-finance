@@ -20,9 +20,10 @@ export enum MFButtonTypeEnum {
   imports: [CommonModule],
 })
 export class MFButtonComponent {
-  public clickEvent = output({ alias: 'p-onclick' });
+  public clickEvent = output({ alias: 'p-click' });
   public kind = input(MFButtonKindEnum.Default, { alias: 'p-kind' });
   public type = input(MFButtonTypeEnum.Primary, { alias: 'p-type' });
+  public isLoading = input(false, { alias: 'p-loading' });
 
   protected onClick(): void {
     this.clickEvent.emit();

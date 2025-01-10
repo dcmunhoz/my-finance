@@ -1,6 +1,15 @@
 <button
+  [disabled]="isLoading()"
   [ngClass]="['mf-button-kind-' + kind(), 'mf-button-type-' + type()]"
+  [class.is-loading]="isLoading()"
   (click)="onClick()"
 >
-  <ng-content></ng-content>
+  @if (isLoading()) {
+    <img
+      src="loading.svg"
+      alt="loading"
+    />
+  } @else {
+    <ng-content></ng-content>
+  }
 </button>

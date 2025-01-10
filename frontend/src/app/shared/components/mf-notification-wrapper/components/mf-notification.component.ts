@@ -20,7 +20,7 @@ export class MFNotificationComponent implements OnInit {
   constructor(private _host: ElementRef<HTMLElement>) {}
 
   public ngOnInit(): void {
-    const duration = 5000;
+    const duration = 10000;
     const interval = 10;
 
     this._timer = setInterval(() => {

@@ -3,10 +3,12 @@ import { MFContainerComponent } from '../../../../shared/components/mf-container
 import { IdentityService } from '../../services/indetity.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RegisterUserRequest } from '../../services/requests/register-user-request.interface';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MFButtonComponent } from '../../../../shared/components/mf-button/mf-button.component';
 import { MFInputComponent } from '../../../../shared/components/mf-input/mf-input.component';
 import { MFNotificationService } from '../../../../shared/components/mf-notification-wrapper/service/mf-notification.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { IErrorResponse } from '../../../../shared/common/responses/error-response.interface';
 
 @Component({
   selector: 'app-register',
@@ -24,6 +26,7 @@ export class RegisterComponent {
   private readonly _identityService = inject(IdentityService);
   private readonly _fb = inject(FormBuilder);
   private readonly _notificationService = inject(MFNotificationService);
+  private readonly _router = inject(Router);
 
   protected formRegister = this._fb.group({
     email: ['', Validators.required],
@@ -32,29 +35,9 @@ export class RegisterComponent {
     confirmationPassword: ['', [Validators.required]],
   });
 
+  protected isLoading = false;
+
   protected registerUser(): void {
-    const random = Math.floor(Math.random() * 3) + 1;
-
-    switch (random) {
-      case 1:
-        this._notificationService.success(
-          'Success Notification',
-          'This is a random success message',
-        );
-        break;
-      case 2:
-        this._notificationService.warning(
-          'Warning Notification',
-          'This is a random warning message',
-        );
-        break;
-      case 3:
-        this._notificationService.error('Error Notification', 'This is a random error message');
-        break;
-    }
-
-    return;
-
     this.formRegister.setErrors(null);
 
     if (this.formRegister.invalid) {
@@ -62,11 +45,27 @@ export class RegisterComponent {
       return;
     }
 
+    this.isLoading = true;
     const request = this.formRegister.value as RegisterUserRequest;
-    this._identityService.registerUser(request).subscribe({
-      next: (response) => {
-        console.log(response);
-      },
-    });
+    this._identityService
+      .registerUser(request)
+      .subscribe({
+        next: () => {
+          this._router.navigate(['/login']);
+          this._notificationService.success('Sucesso!', 'Usuário registrado com sucesso');
+        },
+        error: (e: HttpErrorResponse) => {
+          const response = e.error as IErrorResponse;
+
+          if (response.details != null && response.details.length > 0) {
+            response.details.forEach((detail) => {
+              this._notificationService.error('Atenção!', detail.message);
+            });
+          } else {
+            this._notificationService.error(response.title, response.message);
+          }
+        },
+      })
+      .add(() => (this.isLoading = false));
   }
 }

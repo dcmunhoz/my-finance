@@ -9,24 +9,28 @@ public class RegisterUserRequestValidation : AbstractValidator<RegisterUserReque
     public RegisterUserRequestValidation()
     {
         RuleFor(x => x.Name)
-            .NotEmpty().WithMessage("Name must be specified.")
-            .MaximumLength(255).WithMessage("Name must have maximum 255 characters.")
-            .MinimumLength(3).WithMessage("Name must have at least 3 characters.");
+            .NotEmpty().WithMessage("Nome precisa ser informado")
+            .MaximumLength(255).WithMessage("Nome pode ter no máximo 255 caracteres")
+            .MinimumLength(3).WithMessage("Nome deve ter no mínimo 3 caracteres")
+            .WithName("Nome");
 
         RuleFor(x => x.Email)
-            .NotEmpty().WithMessage("E-mail must be specified.")
-            .MaximumLength(320).WithMessage("E-mail must have maximum 320 characters.")
-            .EmailAddress().WithMessage("Not a valid e-mail.");
+            .NotEmpty().WithMessage("E-mail precisa ser informada")
+            .MaximumLength(320).WithMessage("E-mail pode ter no máximo 255 caracteres")
+            .EmailAddress().WithMessage("E-mail não é válido")
+            .WithName("E-mail");
 
         RuleFor(x => x.Password)
-            .NotEmpty().WithMessage("Password must be specified.")
-            .MinimumLength(8).WithMessage("Password must have at least 8 characters");
+            .NotEmpty().WithMessage("Senha precisa ser informada")
+            .MinimumLength(8).WithMessage("Senha deve ter no mínimo 8 caracteres")
+            .WithName("Senha");
         
 
         RuleFor(x => x.ConfirmationPassword)
-            .NotEmpty().WithMessage("Confirmation Password must be specified.")
-            .MinimumLength(8).WithMessage("Confirmation Password must have at least 8 characters")
-            .Equal(x => x.Password).WithMessage("Confirmation Password must be equals Password");
+            .NotEmpty().WithMessage("Confirmação de senha precisa ser informada")
+            .MinimumLength(8).WithMessage("Confirmação de senha deve ter no mínimo 8 caracteres")
+            .Equal(x => x.Password).WithMessage("As senhas devem ser iguais")
+            .WithName("Confirmação de senha");
 
     }
 }

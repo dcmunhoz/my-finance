@@ -41,7 +41,13 @@
           formRegister.controls.confirmationPassword.hasError('required') ? 'Campo obrigatório' : ''
         "
       ></mf-input>
-      <mf-button (p-onclick)="registerUser()">Registre-se</mf-button>
+
+      <mf-button
+        [p-loading]="isLoading"
+        (p-click)="registerUser()"
+      >
+        Registre-se
+      </mf-button>
 
       <br />
       <br />

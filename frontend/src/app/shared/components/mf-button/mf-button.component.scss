@@ -7,8 +7,16 @@ button {
   border-radius: 5px;
   border: 2px solid;
   cursor: pointer;
-
   transition: opacity 50ms;
+
+  > img {
+    height: 18px;
+  }
+
+  &.is-loading {
+    opacity: 0.9;
+    cursor: wait;
+  }
 }
 
 button:hover {

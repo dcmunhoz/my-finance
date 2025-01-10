@@ -38,7 +38,7 @@ public class IdentityController : ControllerBase
             var response = new ErrorResponse
             {
                 Id = nameof(RegisterUserAsync),
-                Title = "Validation errors occurred",
+                Title = "Ocorreram erros de validação",
                 Details =  result.Errors.Select(s => new ErrorDetailsResponse
                 {
                     Title = s.PropertyName,
@@ -53,8 +53,8 @@ public class IdentityController : ControllerBase
             return BadRequest(new ErrorResponse
             {
                 Id = this.GetType().FullName ?? "",
-                Title = "E-mail already exists",
-                Message = "This e-mail is already registered. If you forget your password try to recovery."
+                Title = "Este e-mail já existe",
+                Message = "Este e-mail já esta registrado. Se você esqueceu sua senha tente recupera-la."
             });
         
         User user = new(request.Name, request.Email, _hashService.GetStringHash(request.Password));
@@ -73,7 +73,7 @@ public class IdentityController : ControllerBase
                                                             cancellationToken);
 
         if (user is null)
-            return Unauthorized(new ErrorResponse
+            return BadRequest(new ErrorResponse
             {
                 Title = "Login failed",
                 Message = "Username or password is incorrect."
