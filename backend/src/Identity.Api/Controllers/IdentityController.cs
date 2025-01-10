@@ -5,6 +5,7 @@ using Common.Api.Response;
 using Identity.Api.Data.Context;
 using Identity.Api.Models;
 using Identity.Api.Requests;
+using Identity.Api.Responses;
 using Identity.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -75,8 +76,8 @@ public class IdentityController : ControllerBase
         if (user is null)
             return BadRequest(new ErrorResponse
             {
-                Title = "Login failed",
-                Message = "Username or password is incorrect."
+                Title = "Falha ao autenticar",
+                Message = "Usuário ou senha incorretos, tente novamente."
             });
         
         var secret = _configuration.GetSection("JWTAuthentication:Secret").Value ?? "";
@@ -96,6 +97,6 @@ public class IdentityController : ControllerBase
         };
         
         var token = tokenHandler.CreateToken(tokenDescriptor);
-        return Ok(new { Token = tokenHandler.WriteToken(token) });
+        return Ok(new LoginResponse(tokenHandler.WriteToken(token), user.Name, user.Email ));
     }
 }

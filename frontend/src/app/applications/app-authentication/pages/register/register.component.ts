@@ -1,14 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { MFContainerComponent } from '../../../../shared/components/mf-container/mf-container.component';
-import { IdentityService } from '../../services/indetity.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RegisterUserRequest } from '../../services/requests/register-user-request.interface';
+import { RegisterUserRequest } from '../../../../shared/services/identity/requests/register-user-request.interface';
 import { Router, RouterLink } from '@angular/router';
 import { MFButtonComponent } from '../../../../shared/components/mf-button/mf-button.component';
 import { MFInputComponent } from '../../../../shared/components/mf-input/mf-input.component';
 import { MFNotificationService } from '../../../../shared/components/mf-notification-wrapper/service/mf-notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { IErrorResponse } from '../../../../shared/common/responses/error-response.interface';
+import { ErrorResponse } from '../../../../shared/common/responses/error-response.interface';
+import { IdentityService } from '../../../../shared/services/identity/indetity.service';
 
 @Component({
   selector: 'app-register',
@@ -55,7 +55,7 @@ export class RegisterComponent {
           this._notificationService.success('Sucesso!', 'Usuário registrado com sucesso');
         },
         error: (e: HttpErrorResponse) => {
-          const response = e.error as IErrorResponse;
+          const response = e.error as ErrorResponse;
 
           if (response.details != null && response.details.length > 0) {
             response.details.forEach((detail) => {

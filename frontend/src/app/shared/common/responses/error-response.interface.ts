@@ -1,11 +1,11 @@
-export interface IErrorResponse {
+export interface ErrorResponse {
   id: string;
   title: string;
   message: string;
-  details: IErrorDetailsResponse[];
+  details: ErrorDetailsResponse[];
 }
 
-export interface IErrorDetailsResponse {
+export interface ErrorDetailsResponse {
   title: string;
   message: string;
 }
