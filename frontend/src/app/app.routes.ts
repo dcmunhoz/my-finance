@@ -16,6 +16,20 @@ export const routes: Routes = [
       ),
   },
   {
+    path: '',
+    loadComponent: () =>
+      import('./shared/components/mf-host/mf-host.component').then((c) => c.MFHostComponent),
+    children: [
+      {
+        path: 'categories',
+        loadComponent: () =>
+          import('./applications/app-categories/categories/categories.component').then(
+            (c) => c.CategoriesComponent,
+          ),
+      },
+    ],
+  },
+  {
     path: '**',
     redirectTo: 'login',
   },
