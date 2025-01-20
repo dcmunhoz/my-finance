@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Api", "src\Identit
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{18ED934A-E206-4661-BEB9-62C99D95DC69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Api", "Common.Api\Common.Api.csproj", "{F4BD6BF6-A9D9-4CCF-87D7-2078464B0C4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Api", "src\Common.Api\Common.Api.csproj", "{F4BD6BF6-A9D9-4CCF-87D7-2078464B0C4B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseAuthentication", "src\BaseAuthentication\BaseAuthentication.csproj", "{CE79D706-8F87-4B7D-9BF5-39052E45A7DC}"
 EndProject
