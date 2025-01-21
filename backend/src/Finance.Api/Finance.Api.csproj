@@ -7,16 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore"  />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational"  />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer"  />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\Common.Api\Common.Api.csproj" />
       <ProjectReference Include="..\BaseAuthentication\BaseAuthentication.csproj" />
+      <ProjectReference Include="..\Common.Api\Common.Api.csproj" />
     </ItemGroup>
 
 </Project>
