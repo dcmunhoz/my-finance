@@ -1,12 +1,8 @@
-using BaseAuthentication;
-
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
-
-builder.Services.AddOpenApi();
-
-builder.Services.AddBaseAuthentication(builder.Configuration);
+builder.Services.AddApi(builder.Configuration)
+                .AddApplication()
+                .AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
