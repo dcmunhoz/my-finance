@@ -1,3 +1,3 @@
-﻿namespace Finance.Api.Categories.Requests;
+﻿namespace Finance.Api.Contracts.Categories.Requests;
 
 public record CreateCategoryRequest(string Description, string Color, Guid? ParentId);

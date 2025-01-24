@@ -1,10 +1,11 @@
-﻿using Finance.Application.Common.Interface.Repository;
+﻿using Common.Application.Commands;
+using Finance.Application.Common.Interface.Repository;
 using Finance.Domain.Categories;
-using MediatR;
+using Result;
 
 namespace Finance.Application.Business.Categories.Commands.CreateCategory;
 
-public class CreateCategoryHandler : IRequestHandler<CreateCategoryCommand, Guid>
+public class CreateCategoryHandler : ICommandHandler<CreateCategoryCommand, Guid>
 {
     private readonly ICategoryRepository _repository;
     
@@ -13,7 +14,7 @@ public class CreateCategoryHandler : IRequestHandler<CreateCategoryCommand, Guid
         _repository = repository;
     }
     
-    public async Task<Guid> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
+    public async Task<Result<Guid>> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
     {
         Category category = new(request.Description, request.Color, request.ParentId, Guid.Empty);
 

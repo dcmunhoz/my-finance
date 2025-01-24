@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+      <PackageReference Include="MediatR" />
       <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
     </ItemGroup>
@@ -17,6 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Common.Application\Common.Application.csproj" />
       <ProjectReference Include="..\Common.Infra.Database\Common.Infra.Database.csproj" />
       <ProjectReference Include="..\Finance.Domain\Finance.Domain.csproj" />
     </ItemGroup>

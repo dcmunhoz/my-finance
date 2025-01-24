@@ -1,5 +1,12 @@
-﻿using MediatR;
+﻿using Common.Application.Commands;
+using MediatR;
+using Result;
 
 namespace Finance.Application.Business.Categories.Commands.CreateCategory;
 
-public record CreateCategoryCommand(string Description, string Color, Guid? ParentId) : IRequest<Guid>;
+public class CreateCategoryCommand : AuthenticatedCommand<Guid>
+{
+    public string Description { get; set; }
+    public string Color { get; set; }
+    public Guid? ParentId { get; set; }
+}

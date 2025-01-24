@@ -17,4 +17,8 @@
       <ProjectReference Include="..\Finance.Infra\Finance.Infra.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Contracts\" />
+    </ItemGroup>
+
 </Project>

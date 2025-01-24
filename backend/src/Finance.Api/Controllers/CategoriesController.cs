@@ -1,4 +1,4 @@
-﻿using Finance.Api.Categories.Requests;
+﻿using Finance.Api.Contracts.Categories.Requests;
 using Finance.Application.Business.Categories.Commands.CreateCategory;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -21,8 +21,16 @@ public class CategoriesController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateCategoryRequest request, CancellationToken token = default)
     {
-        CreateCategoryCommand command = new(request.Description, request.Color, request.ParentId);
+        CreateCategoryCommand command = new()
+        {
+            ParentId = request.ParentId,
+            Color = request.Color,
+            Description = request.Description,
+            UserId = Guid.Empty
+        } ;
+
+        var result = await _mediator.Send(command, token);
         
-        return Created("/", await _mediator.Send(command, token));
+        return Created("/", result);
     }
 }
