@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\MyFinance.ServiceDefaults\MyFinance.ServiceDefaults.csproj" />
       <ProjectReference Include="..\BaseAuthentication\BaseAuthentication.csproj" />
       <ProjectReference Include="..\Common.Api\Common.Api.csproj" />
       <ProjectReference Include="..\Finance.Application\Finance.Application.csproj" />

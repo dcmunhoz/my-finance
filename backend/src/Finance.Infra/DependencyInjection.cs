@@ -18,7 +18,7 @@ public static class DependencyInjection
     private static void AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<FinanceDbContext>(opt => 
-            opt.UseSqlServer(configuration.GetConnectionString("SqlServer")));
+            opt.UseSqlServer(configuration.GetConnectionString("FINANCE")));
 
         services.AddTransient<ICategoryRepository, CategoryRepository>();
 
