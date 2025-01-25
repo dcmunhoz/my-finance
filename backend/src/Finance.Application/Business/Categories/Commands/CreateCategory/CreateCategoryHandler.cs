@@ -1,4 +1,5 @@
 ﻿using Common.Application.Commands;
+using Finance.Application.Business.Categories.Errors;
 using Finance.Application.Common.Interface.Repository;
 using Finance.Domain.Categories;
 using Result;
@@ -16,7 +17,16 @@ public class CreateCategoryHandler : ICommandHandler<CreateCategoryCommand, Guid
     
     public async Task<Result<Guid>> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
     {
-        Category category = new(request.Description, request.Color, request.ParentId, Guid.Empty);
+        if (request.ParentId.HasValue
+            && await _repository.ExistsAsync(w => 
+                w.ParentId.Equals(request.ParentId.Value), cancellationToken))
+            return Error.Category.ParentInexistent();
+
+        if (await _repository.ExistsAsync(w => 
+                w.Description.Trim().Equals(request.Description.Trim()), cancellationToken))
+            return Error.Category.CategoryWithSameDescription();
+        
+        Category category = new(request.Type, request.Description, request.Color, request.ParentId, Guid.Empty);
 
         await _repository.CreateAsync(category, cancellationToken);
         await _repository.CommitAsync(cancellationToken);

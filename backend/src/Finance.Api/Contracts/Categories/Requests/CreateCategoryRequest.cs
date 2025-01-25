@@ -1,3 +1,5 @@
-﻿namespace Finance.Api.Contracts.Categories.Requests;
+﻿using Finance.Domain.Categories.Enums;
 
-public record CreateCategoryRequest(string Description, string Color, Guid? ParentId);
+namespace Finance.Api.Contracts.Categories.Requests;
+
+public record CreateCategoryRequest(CategoryType Type, string Description, string Color, Guid? ParentId);

@@ -12,7 +12,7 @@ public static class BaseAuthenticationConfiguration
     public static IServiceCollection AddBaseAuthentication(this IServiceCollection services, ConfigurationManager configurationManager)
     {
         var secretKey = configurationManager.GetSection("JWTAuthentication:Secret")?.Value ?? "";
-        
+
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {

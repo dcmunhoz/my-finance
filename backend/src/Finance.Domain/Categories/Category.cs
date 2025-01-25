@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Finance.Domain.Categories.Enums;
 
 namespace Finance.Domain.Categories;
 
@@ -8,7 +9,7 @@ public class Category
     [ExcludeFromCodeCoverage]
     protected Category() { }
     
-    public Category(string description, string color, Guid? parentId, Guid userId)
+    public Category(CategoryType type, string description, string color, Guid? parentId, Guid userId)
     {
         Description = description;
         Color = color;
@@ -17,6 +18,7 @@ public class Category
     }
 
     public Guid Id { get; }
+    public CategoryType Type { get; private set; }
     public string Description { get; private set; }
     public string Color { get; private set; }
     public Guid? ParentId { get; private set; }

@@ -1,5 +1,6 @@
 ﻿using Common.Api.ApiBaseController;
 using Finance.Api.Contracts.Categories.Requests;
+using Finance.Api.Services;
 using Finance.Application.Business.Categories.Commands.CreateCategory;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -13,10 +14,12 @@ namespace Finance.Api.Controllers;
 public class CategoriesController : ApiBaseController
 {
     private readonly IMediator _mediator;
+    private readonly TokenService _tokenService;
     
-    public CategoriesController(IMediator mediator)
+    public CategoriesController(IMediator mediator, TokenService tokenService)
     {
         _mediator = mediator;
+        _tokenService = tokenService;
     }
     
     [HttpPost]
@@ -24,10 +27,11 @@ public class CategoriesController : ApiBaseController
     {
         CreateCategoryCommand command = new()
         {
+            Type = request.Type,
             ParentId = request.ParentId,
             Color = request.Color,
             Description = request.Description,
-            UserId = Guid.Empty
+            UserId = _tokenService.GetUserId()
         } ;
 
         var result = await _mediator.Send(command, token);
