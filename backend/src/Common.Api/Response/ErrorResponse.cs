@@ -4,7 +4,6 @@ namespace Common.Api.Response;
 
 public class ErrorResponse
 {
-    public string Id { get; set; } = String.Empty;
     public string? Title { get; set; }
     public string? Message { get; set; }
     public IEnumerable<ErrorDetailsResponse>? Details { get; set; }

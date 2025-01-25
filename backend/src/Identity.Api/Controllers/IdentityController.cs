@@ -38,7 +38,6 @@ public class IdentityController : ControllerBase
         {
             var response = new ErrorResponse
             {
-                Id = nameof(RegisterUserAsync),
                 Title = "Ocorreram erros de validação",
                 Details =  result.Errors.Select(s => new ErrorDetailsResponse
                 {
@@ -53,7 +52,6 @@ public class IdentityController : ControllerBase
         if (await _context.Users.AnyAsync(w => w.Email.Trim().Equals(request.Email.Trim()), cancellationToken))
             return BadRequest(new ErrorResponse
             {
-                Id = this.GetType().FullName ?? "",
                 Title = "Este e-mail já existe",
                 Message = "Este e-mail já esta registrado. Se você esqueceu sua senha tente recupera-la."
             });

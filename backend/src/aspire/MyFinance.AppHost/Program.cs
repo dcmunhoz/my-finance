@@ -8,7 +8,6 @@ var identity = builder.AddProject<Projects.Identity_Api>("identity-api")
     .WithReference(identityContextDb)
     .WaitFor(identityContextDb);
 
-
 var financeContextDb = sqlServer.AddDatabase("FINANCE");
 var finance = builder.AddProject<Projects.Finance_Api>("finance-api")
     .WaitFor(identity)
