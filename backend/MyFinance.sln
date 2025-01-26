@@ -32,6 +32,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{D4B60E0E-F1B5-4BBA-9AF5-8F315AC35326}"
 	ProjectSection(SolutionItems) = preProject
 		Directory.Packages.props = Directory.Packages.props
+		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finance.Domain", "src\Finance.Domain\Finance.Domain.csproj", "{3C0C2A1C-7FEF-4457-B5BF-908BB015A71B}"
@@ -52,7 +53,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aspire", "Aspire", "{A9FE55
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFinance.AppHost", "src\aspire\MyFinance.AppHost\MyFinance.AppHost.csproj", "{5F3C19FF-588C-4DBD-B5FC-5996D7EFE321}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFinance.ServiceDefaults", "MyFinance.ServiceDefaults\MyFinance.ServiceDefaults.csproj", "{A30319D0-C598-4EA0-B63C-77FAE949B483}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFinance.ServiceDefaults", "src\aspire\MyFinance.ServiceDefaults\MyFinance.ServiceDefaults.csproj", "{A30319D0-C598-4EA0-B63C-77FAE949B483}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finance.Contracts", "src\Finance.Contracts\Finance.Contracts.csproj", "{F30D6746-87EA-426E-AAE1-90381DB49E40}"
 EndProject
