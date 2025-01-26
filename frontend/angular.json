@@ -58,6 +58,17 @@
                   "with": "src/environments/environment.development.ts"
                 }
               ]
+            },
+            "aspire": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.aspire.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -70,9 +81,15 @@
             },
             "development": {
               "buildTarget": "frontend:build:development"
+            },
+            "aspire": {
+              "buildTarget": "frontend:build:aspire"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "proxyConfig": "proxy.conf.js"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"
@@ -103,6 +120,9 @@
     }
   },
   "cli": {
-    "schematicCollections": ["angular-eslint"]
+    "schematicCollections": [
+      "angular-eslint"
+    ],
+    "analytics": false
   }
 }

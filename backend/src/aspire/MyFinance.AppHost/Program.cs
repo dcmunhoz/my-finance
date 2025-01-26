@@ -14,4 +14,10 @@ var finance = builder.AddProject<Projects.Finance_Api>("finance-api")
     .WithReference(financeContextDb)
     .WaitFor(financeContextDb);
 
+var angular = builder.AddNpmApp("my-finance-presentation", "../../../../frontend", "start:aspire")
+    .WaitFor(identity)
+    .WithReference(identity)
+    .WithHttpEndpoint(env: "PORT")
+    .WithExternalHttpEndpoints();
+
 builder.Build().Run();
