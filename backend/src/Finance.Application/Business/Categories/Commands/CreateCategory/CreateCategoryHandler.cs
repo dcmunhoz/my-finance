@@ -26,7 +26,7 @@ public class CreateCategoryHandler : ICommandHandler<CreateCategoryCommand, Guid
                 w.Description.Trim().Equals(request.Description.Trim()), cancellationToken))
             return Error.Category.CategoryWithSameDescription();
         
-        Category category = new(request.Type, request.Description, request.Color, request.ParentId, Guid.Empty);
+        Category category = new(request.Type, request.Description, request.Color, request.ParentId, request.UserId);
 
         await _repository.CreateAsync(category, cancellationToken);
         await _repository.CommitAsync(cancellationToken);

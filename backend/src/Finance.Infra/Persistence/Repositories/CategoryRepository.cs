@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using Finance.Application.Common.Interface.Repository;
+using Finance.Contracts.Categories.Responses;
 using Finance.Domain.Categories;
 using Microsoft.EntityFrameworkCore;
 

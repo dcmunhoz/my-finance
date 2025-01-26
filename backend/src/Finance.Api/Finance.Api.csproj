@@ -15,11 +15,8 @@
       <ProjectReference Include="..\BaseAuthentication\BaseAuthentication.csproj" />
       <ProjectReference Include="..\Common.Api\Common.Api.csproj" />
       <ProjectReference Include="..\Finance.Application\Finance.Application.csproj" />
+      <ProjectReference Include="..\Finance.Contracts\Finance.Contracts.csproj" />
       <ProjectReference Include="..\Finance.Infra\Finance.Infra.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Contracts\" />
     </ItemGroup>
 
 </Project>

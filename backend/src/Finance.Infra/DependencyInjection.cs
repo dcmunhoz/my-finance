@@ -1,5 +1,7 @@
-﻿using Finance.Application.Common.Interface.Repository;
+﻿using Finance.Application.Common.Interface.Queries;
+using Finance.Application.Common.Interface.Repository;
 using Finance.Infra.Database.Persistence;
+using Finance.Infra.Database.Persistence.Queries;
 using Finance.Infra.Database.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -19,8 +21,18 @@ public static class DependencyInjection
     {
         services.AddDbContext<FinanceDbContext>(opt => 
             opt.UseSqlServer(configuration.GetConnectionString("FINANCE")));
+        
+        services.AddRepositories();
+        services.AddQueries();
+    }
 
+    private static void AddRepositories(this IServiceCollection services)
+    {
         services.AddTransient<ICategoryRepository, CategoryRepository>();
+    }
 
+    private static void AddQueries(this IServiceCollection services)
+    {
+        services.AddTransient<ICategoryQuery, CategoryQuery>();
     }
 }

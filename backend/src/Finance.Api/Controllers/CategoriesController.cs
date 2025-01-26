@@ -1,7 +1,8 @@
 ﻿using Common.Api.ApiBaseController;
-using Finance.Api.Contracts.Categories.Requests;
 using Finance.Api.Services;
 using Finance.Application.Business.Categories.Commands.CreateCategory;
+using Finance.Application.Common.Interface.Queries;
+using Finance.Contracts.Categories.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,11 +16,13 @@ public class CategoriesController : ApiBaseController
 {
     private readonly IMediator _mediator;
     private readonly TokenService _tokenService;
+    private readonly ICategoryQuery _categoryQuery;
     
-    public CategoriesController(IMediator mediator, TokenService tokenService)
+    public CategoriesController(IMediator mediator, TokenService tokenService, ICategoryQuery categoryQuery)
     {
         _mediator = mediator;
         _tokenService = tokenService;
+        _categoryQuery = categoryQuery;
     }
     
     [HttpPost]
@@ -38,4 +41,8 @@ public class CategoriesController : ApiBaseController
 
         return CreateResponseOnPost(result, "/");
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById([FromRoute] Guid id, CancellationToken token = default)
+        => Ok(await _categoryQuery.GetByIdAsync(id, token));
 }
