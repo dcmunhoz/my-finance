@@ -1,6 +1,7 @@
 ﻿using Common.Api.ApiBaseController;
 using Finance.Api.Services;
 using Finance.Application.Business.Categories.Commands.CreateCategory;
+using Finance.Application.Business.Categories.Commands.UpdateCategory;
 using Finance.Application.Common.Interface.Queries;
 using Finance.Contracts.Categories.Requests;
 using MediatR;
@@ -44,5 +45,21 @@ public class CategoriesController : ApiBaseController
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById([FromRoute] Guid id, CancellationToken token = default)
-        => Ok(await _categoryQuery.GetByIdAsync(id, token));
+        => CreateResponseOnGet(await _categoryQuery.GetByIdAsync(id, token));
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update([FromBody]UpdateCategoryRequest request, [FromRoute]Guid Id, CancellationToken token = default)
+    {
+        UpdateCategoryCommand command = new()
+        {
+            Id = Id,
+            Description = request.Description,
+            Color = request.Color,
+            UserId = _tokenService.GetUserId()
+        };
+        
+        var result = await _mediator.Send(command, token);
+
+        return CreateResponseOnPut(result);
+    }
 }

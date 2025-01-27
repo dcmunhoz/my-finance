@@ -22,6 +22,12 @@ public class Category
     public string Description { get; private set; }
     public string Color { get; private set; }
     public Guid? ParentId { get; private set; }
-    public Category Parent { get; }
+    public Category? Parent { get; }
     public Guid UserId { get; private set; }
+
+    public void Update(string description, string color)
+    {
+        Description = description;
+        Color = color;
+    }
 }

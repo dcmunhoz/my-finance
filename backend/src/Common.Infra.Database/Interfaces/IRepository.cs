@@ -2,5 +2,5 @@
 
 public interface IRepository
 {
-    Task CommitAsync(CancellationToken token);
+    Task<bool> CommitAsync(CancellationToken token);
 }

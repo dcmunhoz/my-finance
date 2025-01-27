@@ -14,6 +14,9 @@ public class CategoryRepository : ICategoryRepository
     {
         _context = context;
     }
+    
+    public async Task<bool> CommitAsync(CancellationToken token)
+        => await _context.CommitAsync(token);
 
     public async Task<bool> ExistsAsync(Expression<Func<Category, bool>> predicate, CancellationToken token = default)
         => await _context.Categories.AnyAsync(predicate, token);
@@ -23,8 +26,6 @@ public class CategoryRepository : ICategoryRepository
         await _context.Categories.AddAsync(category, token);
     }
 
-    public async Task CommitAsync(CancellationToken token)
-    {
-        await _context.SaveChangesAsync(token);
-    }
+    public async Task<Category?> GetByIdAsync(Guid id, CancellationToken token = default)
+        => await _context.Categories.FirstOrDefaultAsync(w => w.Id.Equals(id), token);
 }

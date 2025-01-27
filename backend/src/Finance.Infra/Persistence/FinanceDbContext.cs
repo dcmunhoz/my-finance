@@ -19,8 +19,6 @@ public class FinanceDbContext : DbContext, IUnitOfWork
         base.OnModelCreating(modelBuilder);
     }
 
-    public async Task CommitAsync(CancellationToken token)
-    {
-        await SaveChangesAsync(token);
-    }
+    public async Task<bool> CommitAsync(CancellationToken token)
+        => await SaveChangesAsync(token) > 0;
 }

@@ -11,16 +11,21 @@ public class CategoryResponse
     public CategoryType Type { get; set; }
     public string Description { get; set; }
     public string Color { get; set; }
-    public ParentCategoryResponse Parent { get; set; }
+    public ParentCategoryResponse? Parent { get; set; }
 
 
-    public static implicit operator CategoryResponse(Category? category)
-        => new CategoryResponse
+    public static implicit operator CategoryResponse?(Category? category)
+        => category is null ? null :  new CategoryResponse
         {
             Id = category.Id,
             Description = category.Description,
             Color = category.Color,
             Type = category.Type,
-            Parent = category.Parent is null ? null : new ParentCategoryResponse(category.Id, category.Description, category.Color),
+            Parent = category.Parent is null
+                ? null
+                : new ParentCategoryResponse(
+                    category.Parent.Id, 
+                    category.Parent.Description, 
+                    category.Parent.Color),
         };
 }
