@@ -22,3 +22,19 @@ jobs:
       run: dotnet build backend/tests/Finance.Domain.Tests/Finance.Domain.Tests.csproj -c Release -o backend/tests/Finance.Domain.Tests/release
     - name: Test
       run: dotnet test backend/tests/Finance.Domain.Tests/release/Finance.Domain.Tests.dll
+      
+  finance_application:
+    name: Finance.Application.Tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+    - name: Restore
+      run: dotnet restore backend/tests/Finance.Application.Tests/Finance.Application.Tests.csproj
+    - name: Build
+      run: dotnet build backend/tests/Finance.Application.Tests/Finance.Application.Tests.csproj -c Release -o backend/tests/Finance.Application.Tests/release
+    - name: Test
+      run: dotnet test backend/tests/Finance.Application.Tests/release/Finance.Application.Tests.dll
