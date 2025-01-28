@@ -20,9 +20,9 @@ jobs:
       with:
         dotnet-version: 9.0.x
     - name: Restore
-      run: dotnet restore .\backend\tests\Finance.Domain.Tests\Finance.Domain.Tests.csproj
+      run: dotnet restore backend/tests/Finance.Domain.Tests/Finance.Domain.Tests.csproj
     - name: Build
-      run: dotnet build .\backend\tests\Finance.Domain.Tests\Finance.Domain.Tests.csproj -c Release -o.\backend\tests\Finance.Domain.Tests\release
+      run: dotnet build backend/tests/Finance.Domain.Tests/Finance.Domain.Tests.csproj -c Release -obackend/tests/Finance.Domain.Tests/release
     - name: Test
-      run: dotnet test .\backend\tests\Finance.Domain.Tests\release\Finance.Domain.Tests.dll
+      run: dotnet test backend/tests/Finance.Domain.Tests/release/Finance.Domain.Tests.dll
 
