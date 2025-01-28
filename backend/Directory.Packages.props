@@ -3,14 +3,22 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Aspire.Hosting.NodeJs" Version="9.0.0" />
-    <PackageVersion Include="Aspire.Hosting.SqlServer" Version="9.0.0" />
+    
     <PackageVersion Include="FluentValidation" Version="11.11.0" />
     <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
     <PackageVersion Include="MediatR" Version="12.4.1" />
     <PackageVersion Include="MediatR.Contracts" Version="2.0.1" />
     <PackageVersion Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
-    <!-- Microsoft packages -->
+
+    <!-- xUnit -->
+    <PackageVersion Include="coverlet.collector" Version="6.0.2"/>
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.12.0"/>
+    <PackageVersion Include="xunit" Version="2.9.2"/>
+    <PackageVersion Include="xunit.runner.visualstudio" Version="2.8.2"/>
+    <PackageVersion Include="Moq.AutoMock" Version="3.5.0" />
+    <PackageVersion Include="AutoBogus" Version="2.13.1" />
+    
+    <!-- Microsoft -->
     <PackageVersion Include="Microsoft.AspNetCore.App" Version="2.2.8" />
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="9.0.1" />
     <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.0" />
@@ -19,5 +27,10 @@
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.1" />
+    
+    <!-- Aspire -->
+    <PackageVersion Include="Aspire.Hosting.NodeJs" Version="9.0.0" />
+    <PackageVersion Include="Aspire.Hosting.SqlServer" Version="9.0.0" />
+      
   </ItemGroup>
 </Project>

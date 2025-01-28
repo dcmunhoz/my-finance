@@ -6,8 +6,8 @@ public static partial class Error
 {
     public static class Category
     {
-        public static ResultError CategoryInexistent => new("Categoria inexistente", "Categoria informada não existe");
-        public static ResultError ParentInexistent => new("Categoria inexistente", "Categoria pai informada não existe");
-        public static ResultError CategoryWithSameDescription => new("Categoria já exsite","Já existe uma categoria com a descrição informada");
+        public static ResultError CategoryNonExistent => new(nameof(CategoryNonExistent), "Categoria inexistente", "Categoria informada não existe");
+        public static ResultError ParentNonExistent => new(nameof(ParentNonExistent), "Categoria inexistente", "Categoria pai informada não existe");
+        public static ResultError CategoryWithSameDescription => new(nameof(CategoryWithSameDescription), "Categoria já exsite","Já existe uma categoria com a descrição informada");
     }
 }

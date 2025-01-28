@@ -20,7 +20,7 @@ public class CreateCategoryHandler : ICommandHandler<CreateCategoryCommand, Guid
         if (request.ParentId.HasValue
             && !await _repository.ExistsAsync(w => 
                 w.Id.Equals(request.ParentId.Value), cancellationToken))
-            return Error.Category.ParentInexistent;
+            return Error.Category.ParentNonExistent;
 
         if (await _repository.ExistsAsync(w => 
                 w.Description.Trim().Equals(request.Description.Trim()), cancellationToken))

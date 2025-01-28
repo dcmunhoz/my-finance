@@ -23,7 +23,7 @@ public class UpdateCategoryHandler : ICommandHandler<UpdateCategoryCommand, bool
 
         var category = await _categoryRepository.GetByIdAsync(request.Id, cancellationToken);
         if (category is null)
-            return Error.Category.CategoryInexistent;
+            return Error.Category.CategoryNonExistent;
 
         category.Update(request.Description, request.Color);
         
