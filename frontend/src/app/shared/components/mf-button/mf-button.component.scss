@@ -1,0 +1,87 @@
+button {
+  background-color: #fff;
+  width: 100%;
+  margin: 5px;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 2px solid;
+  cursor: pointer;
+  transition: opacity 50ms;
+
+  > img {
+    height: 18px;
+  }
+
+  &.is-loading {
+    opacity: 0.9;
+    cursor: wait;
+  }
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button.mf-button-kind-default {
+  color: var(--primary-blue);
+  border-color: var(--primary-blue);
+
+  &.mf-button-type-primary {
+    background-color: var(--primary-blue);
+    color: var(--default-white) !important;
+  }
+
+  &.mf-button-type-secondary {
+    background-color: var(--default-white);
+    color: var(--primary-blue) !important;
+  }
+
+  &.mf-button-type-tertiary {
+    background-color: var(--default-white);
+    color: var(--primary-blue) !important;
+    border-color: var(--default-white) !important;
+  }
+}
+
+button.mf-button-kind-danger {
+  color: var(--primary-red);
+  border-color: var(--primary-red);
+
+  &.mf-button-type-primary {
+    background-color: var(--primary-red);
+    color: var(--default-white) !important;
+  }
+
+  &.mf-button-type-secondary {
+    background-color: var(--default-white);
+    color: var(--primary-red) !important;
+  }
+
+  &.mf-button-type-tertiary {
+    background-color: var(--default-white);
+    color: var(--primary-red) !important;
+    border-color: var(--default-white) !important;
+  }
+}
+
+button.mf-button-kind-success {
+  color: var(--primary-green);
+  border-color: var(--primary-green);
+
+  &.mf-button-type-primary {
+    background-color: var(--primary-green);
+    color: var(--default-white) !important;
+  }
+
+  &.mf-button-type-secondary {
+    background-color: var(--default-white);
+    color: var(--primary-green) !important;
+  }
+
+  &.mf-button-type-tertiary {
+    background-color: var(--default-white);
+    color: var(--primary-green) !important;
+    border-color: var(--default-white) !important;
+  }
+}

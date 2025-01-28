@@ -1,21 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore"  />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational"  />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer"  />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Common.Api\Common.Api.csproj" />
+      <ProjectReference Include="..\..\src\Common.Api\Common.Api.csproj" />
+      <ProjectReference Include="..\aspire\MyFinance.ServiceDefaults\MyFinance.ServiceDefaults.csproj" />
+      <ProjectReference Include="..\BaseAuthentication\BaseAuthentication.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,0 +1,25 @@
+@if (!!notification()) {
+  <div
+    #notificationTemplate
+    aria-hidden="true"
+    class="notification"
+    [class.success]="notification()?.type === notificationType.Success"
+    [class.warning]="notification()?.type === notificationType.Warning"
+    [class.error]="notification()?.type === notificationType.Error"
+    [class.removing]="removing"
+    [style.pointer-events]="removing ? 'none' : 'auto'"
+    (click)="removeNotification()"
+  >
+    <div class="title">
+      <span>{{ notification()?.title }} </span>
+    </div>
+    <div class="message">
+      <span>{{ notification()?.message }}</span>
+    </div>
+
+    <div
+      class="timer"
+      [style.width.%]="timeLeftPercent"
+    ></div>
+  </div>
+}

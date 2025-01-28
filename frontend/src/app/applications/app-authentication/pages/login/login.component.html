@@ -1,0 +1,48 @@
+<div class="login-page-container">
+  <mf-container>
+    <form [formGroup]="formLogin">
+      <div class="login-form-container">
+        <h1>Login</h1>
+
+        <br />
+
+        <mf-input
+          formControlName="email"
+          p-placeholder="E-mail"
+          [p-type]="inputTypeEnum.Text"
+          [p-error]="!!formLogin.get('email')?.errors && !!formLogin.errors"
+          [p-error-detail]="
+            formLogin.get('email')?.errors?.['required'] ? 'E-mail é obrigatório' : ''
+          "
+        />
+
+        <br />
+
+        <mf-input
+          formControlName="password"
+          p-placeholder="Senha"
+          [p-type]="inputTypeEnum.Password"
+          [p-error]="!!formLogin.get('password')?.errors && !!formLogin.errors"
+          [p-error-detail]="
+            formLogin.get('password')?.errors?.['required'] ? 'Senha é obrigatória' : ''
+          "
+        />
+
+        <br />
+
+        <mf-button
+          (p-click)="onClick()"
+          [p-kind]="buttonKindEnum.Success"
+          [p-loading]="isLoading"
+        >
+          Acessar
+        </mf-button>
+
+        <br />
+        <br />
+
+        <span>Ainda não tem uma conta? Cadastre-se <a routerLink="/register">aqui</a>. </span>
+      </div>
+    </form>
+  </mf-container>
+</div>

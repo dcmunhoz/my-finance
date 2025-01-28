@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\aspire\MyFinance.ServiceDefaults\MyFinance.ServiceDefaults.csproj" />
+      <ProjectReference Include="..\BaseAuthentication\BaseAuthentication.csproj" />
+      <ProjectReference Include="..\Common.Api\Common.Api.csproj" />
+      <ProjectReference Include="..\Finance.Application\Finance.Application.csproj" />
+      <ProjectReference Include="..\Finance.Contracts\Finance.Contracts.csproj" />
+      <ProjectReference Include="..\Finance.Infra\Finance.Infra.csproj" />
+    </ItemGroup>
+
+</Project>
