@@ -1,7 +1,8 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
 var sqlServer = builder.AddSqlServer("aspire-db-my-finance", port: 1433)
-    .WithLifetime(ContainerLifetime.Persistent);
+    .WithLifetime(ContainerLifetime.Persistent)
+    .WithDataVolume();
 
 var identityContextDb = sqlServer.AddDatabase("IDENTITY");
 var identity = builder.AddProject<Projects.Identity_Api>("identity-api")

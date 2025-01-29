@@ -63,7 +63,15 @@ public static class Extensions
                     .AddAspNetCoreInstrumentation()
                     // Uncomment the following line to enable gRPC instrumentation (requires the OpenTelemetry.Instrumentation.GrpcNetClient package)
                     //.AddGrpcClientInstrumentation()
-                    .AddHttpClientInstrumentation();
+                    .AddHttpClientInstrumentation()
+                    .AddEntityFrameworkCoreInstrumentation(option =>
+                    {
+                        option.EnrichWithIDbCommand = (activity, command) =>
+                        {
+                            var cmd = command.CommandText ?? "";
+                            activity.SetTag("CommandText", cmd);
+                        };
+                    });
             });
 
         builder.AddOpenTelemetryExporters();
