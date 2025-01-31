@@ -15,6 +15,7 @@ public class Category
         Color = color;
         ParentId = parentId;
         UserId = userId;
+        Level = parentId.HasValue ? 2 : 1;
     }
 
     public Guid Id { get; }
@@ -23,6 +24,8 @@ public class Category
     public string Color { get; private set; }
     public Guid? ParentId { get; private set; }
     public Category? Parent { get; }
+    public List<Category> Children { get; }
+    public int Level { get; private set; }
     public Guid UserId { get; private set; }
 
     public void Update(string description, string color)

@@ -23,12 +23,19 @@ public class CategoryMapping : IEntityTypeConfiguration<Category>
         
         builder.Property(p => p.ParentId)
             .HasColumnName("PARENTID");
+
+        builder.Property(p => p.Level)
+            .HasColumnName("LEVEL");
         
         builder.Property(p => p.UserId)
             .HasColumnName("USERID");
 
         builder.HasOne(p => p.Parent)
             .WithMany()
+            .HasForeignKey(p => p.ParentId);
+
+        builder.HasMany(p => p.Children)
+            .WithOne()
             .HasForeignKey(p => p.ParentId);
 
     }

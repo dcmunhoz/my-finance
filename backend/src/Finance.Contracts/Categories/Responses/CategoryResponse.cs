@@ -12,8 +12,7 @@ public class CategoryResponse
     public string Description { get; set; }
     public string Color { get; set; }
     public ParentCategoryResponse? Parent { get; set; }
-
-
+    
     public static implicit operator CategoryResponse?(Category? category)
         => category is null ? null :  new CategoryResponse
         {

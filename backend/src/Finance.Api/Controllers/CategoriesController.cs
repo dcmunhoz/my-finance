@@ -26,6 +26,14 @@ public class CategoriesController : ApiBaseController
         _categoryQuery = categoryQuery;
     }
     
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById([FromRoute] Guid id, CancellationToken token = default)
+        => CreateResponseOnGet(await _categoryQuery.GetByIdAsync(id, token));
+    
+    [HttpGet]
+    public async Task<IActionResult> GetAll(CancellationToken token = default)
+        => CreateResponseOnGet(await _categoryQuery.GetAllAsync(token));
+    
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateCategoryRequest request, CancellationToken token = default)
     {
@@ -42,10 +50,6 @@ public class CategoriesController : ApiBaseController
 
         return CreateResponseOnPost(result, "/");
     }
-
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetById([FromRoute] Guid id, CancellationToken token = default)
-        => CreateResponseOnGet(await _categoryQuery.GetByIdAsync(id, token));
 
     [HttpPut("{id}")]
     public async Task<IActionResult> Update([FromBody]UpdateCategoryRequest request, [FromRoute]Guid Id, CancellationToken token = default)
