@@ -1,5 +1,5 @@
-﻿using Common.Api.ApiBaseController;
-using Finance.Api.Services;
+﻿using BaseAuthentication.Services;
+using Common.Api.ApiBaseController;
 using Finance.Application.Business.Categories.Commands.CreateCategory;
 using Finance.Application.Business.Categories.Commands.UpdateCategory;
 using Finance.Application.Common.Interface.Queries;
@@ -16,10 +16,10 @@ namespace Finance.Api.Controllers;
 public class CategoriesController : ApiBaseController
 {
     private readonly IMediator _mediator;
-    private readonly TokenService _tokenService;
+    private readonly ITokenService _tokenService;
     private readonly ICategoryQuery _categoryQuery;
     
-    public CategoriesController(IMediator mediator, TokenService tokenService, ICategoryQuery categoryQuery)
+    public CategoriesController(IMediator mediator, ITokenService tokenService, ICategoryQuery categoryQuery)
     {
         _mediator = mediator;
         _tokenService = tokenService;

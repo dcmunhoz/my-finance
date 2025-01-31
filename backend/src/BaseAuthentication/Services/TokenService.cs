@@ -1,8 +1,9 @@
 ﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
 
-namespace Finance.Api.Services;
+namespace BaseAuthentication.Services;
 
-public class TokenService
+public class TokenService : ITokenService
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
     

@@ -1,8 +1,9 @@
 ﻿using System.Text;
+using BaseAuthentication.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Protocols;
 using Microsoft.IdentityModel.Tokens;
 
 namespace BaseAuthentication;
@@ -25,6 +26,9 @@ public static class BaseAuthenticationConfiguration
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
                 };
             });
+        
+        services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+        services.AddTransient<ITokenService, TokenService>();
         
         return services;
     }

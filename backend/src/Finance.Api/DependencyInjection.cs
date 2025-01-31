@@ -1,5 +1,4 @@
 ﻿using BaseAuthentication;
-using Finance.Api.Services;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -10,10 +9,7 @@ public static class DependencyInjection
         services.AddControllers();
         services.AddOpenApi();
         services.AddBaseAuthentication(configuration);
-
-        services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
-        services.AddTransient<TokenService>();
-
+        
         return services;
     }
 }
