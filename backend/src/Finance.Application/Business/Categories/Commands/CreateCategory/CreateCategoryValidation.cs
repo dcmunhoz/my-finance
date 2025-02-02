@@ -1,5 +1,4 @@
 ﻿using Common.Application.Validations;
-using Finance.Domain.Categories.Enums;
 using FluentValidation;
 using Result;
 

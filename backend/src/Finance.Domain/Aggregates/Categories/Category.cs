@@ -1,16 +1,18 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Finance.Domain.Categories.Enums;
+using Common.Domain;
+using Finance.Domain.Common.Enums;
 
-namespace Finance.Domain.Categories;
+namespace Finance.Domain.Aggregates.Categories;
 
-public class Category
+public class Category : AggregateRoot, IAggregateRoot
 {
     // EF Core
     [ExcludeFromCodeCoverage]
     protected Category() { }
     
-    public Category(CategoryType type, string description, string color, Guid? parentId, Guid userId)
+    public Category(MovementType type, string description, string color, Guid? parentId, Guid userId)
     {
+        Id = Guid.NewGuid();
         Description = description;
         Color = color;
         ParentId = parentId;
@@ -18,8 +20,7 @@ public class Category
         Level = parentId.HasValue ? 2 : 1;
     }
 
-    public Guid Id { get; }
-    public CategoryType Type { get; private set; }
+    public MovementType Type { get; private set; }
     public string Description { get; private set; }
     public string Color { get; private set; }
     public Guid? ParentId { get; private set; }

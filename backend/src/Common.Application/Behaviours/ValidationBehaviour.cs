@@ -9,22 +9,25 @@ public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TReque
     where TRequest : IRequest<TResponse> 
     where TResponse : IValidatableResult
 {
-    private readonly IValidator<TRequest>? _validator;
+    private readonly IEnumerable<IValidator<TRequest>> _validators;
 
-    public ValidationBehaviour(IValidator<TRequest>? validator)
+    public ValidationBehaviour(IEnumerable<IValidator<TRequest>> validators)
     {
-        _validator = validator;
+        _validators = validators;
     }
 
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
-        if (_validator is null)
-            return await next();
+        if (_validators.Any())
+        {
+            var validator = _validators.First();
+            var validationResult = await validator.ValidateAsync(request, cancellationToken);
+            if (validationResult.IsValid)
+                return await next();
+            
+            return (dynamic)validationResult.Errors.Select(s => s.CustomState as ResultError).ToList();
+        }
         
-        var validationResult = await _validator.ValidateAsync(request, cancellationToken);
-        if (validationResult.IsValid)
-            return await next();
-        
-        return (dynamic)validationResult.Errors.Select(s => s.CustomState as ResultError).ToList();
+        return await next();
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Finance.Application.Business.Categories.Commands.CreateCategory;
 using Finance.Application.Common.Errors;
 using Finance.Application.Common.Interface.Repository;
-using Finance.Domain.Categories;
+using Finance.Domain.Aggregates.Categories;
 
 namespace Finance.Application.Tests.Categories.Handlers;
 
@@ -28,7 +28,7 @@ public class CreateCategoryHandlerTest
         var result = await _handler.Handle(command, CancellationToken.None);
         
         Assert.True(result.HasErrors);
-        Assert.Collection(result.Errors, error => Assert.Equal( Error.Category.ParentNonExistent, error));
+        Assert.Collection(result.Errors, error => Assert.Equal( Errors.Categories.ParentNonExistent, error));
         Assert.Single(result.Errors);
         _mocker.GetMock<ICategoryRepository>().Verify(v => v.ExistsAsync(It.IsAny<Expression<Func<Category, bool>>>(), CancellationToken.None), Times.Once);
         _mocker.GetMock<ICategoryRepository>().Verify(v => v.CommitAsync(CancellationToken.None), Times.Never);
@@ -50,7 +50,7 @@ public class CreateCategoryHandlerTest
         var result = await _handler.Handle(command, CancellationToken.None);
         
         Assert.True(result.HasErrors);
-        Assert.Collection(result.Errors, error => Assert.Equal(Error.Category.CategoryWithSameDescription, error));
+        Assert.Collection(result.Errors, error => Assert.Equal(Errors.Categories.CategoryWithSameDescription, error));
         Assert.Single(result.Errors);
         _mocker.GetMock<ICategoryRepository>().Verify(v => v.CommitAsync(CancellationToken.None), Times.Never);
     }

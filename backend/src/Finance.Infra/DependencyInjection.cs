@@ -29,6 +29,7 @@ public static class DependencyInjection
     private static void AddRepositories(this IServiceCollection services)
     {
         services.AddTransient<ICategoryRepository, CategoryRepository>();
+        services.AddTransient<IReasonRepository, ReasonRepository>();
     }
 
     private static void AddQueries(this IServiceCollection services)

@@ -1,5 +1,5 @@
-﻿using Finance.Domain.Categories;
-using Finance.Domain.Categories.Enums;
+﻿using Finance.Domain.Aggregates.Categories;
+using Finance.Domain.Common.Enums;
 
 namespace Finance.Contracts.Categories.Responses;
 
@@ -8,7 +8,7 @@ public record ParentCategoryResponse(Guid Id, string Description, string Color);
 public class CategoryResponse
 {
     public Guid Id { get; set; }
-    public CategoryType Type { get; set; }
+    public MovementType Type { get; set; }
     public string Description { get; set; }
     public string Color { get; set; }
     public ParentCategoryResponse? Parent { get; set; }

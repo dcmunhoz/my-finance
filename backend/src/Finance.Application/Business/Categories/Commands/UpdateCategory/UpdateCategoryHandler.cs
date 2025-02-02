@@ -1,7 +1,6 @@
 ﻿using Common.Application.Commands;
 using Finance.Application.Common.Errors;
 using Finance.Application.Common.Interface.Repository;
-using Finance.Domain.Categories;
 using Result;
 
 namespace Finance.Application.Business.Categories.Commands.UpdateCategory;
@@ -19,11 +18,11 @@ public class UpdateCategoryHandler : ICommandHandler<UpdateCategoryCommand, bool
     {
         if (await _categoryRepository.ExistsAsync(
                 w => w.Id != request.Id && w.Description.Trim().Equals(request.Description.Trim()), cancellationToken))
-            return Error.Category.CategoryWithSameDescription;
+            return Errors.Categories.CategoryWithSameDescription;
 
         var category = await _categoryRepository.GetByIdAsync(request.Id, cancellationToken);
         if (category is null)
-            return Error.Category.CategoryNonExistent;
+            return Errors.Categories.CategoryNonExistent;
 
         category.Update(request.Description, request.Color);
         

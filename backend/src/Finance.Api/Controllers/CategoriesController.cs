@@ -48,7 +48,7 @@ public class CategoriesController : ApiBaseController
 
         var result = await _mediator.Send(command, token);
 
-        return CreateResponseOnPost(result, "/");
+        return CreateResponseOnPost(result, "/{id}");
     }
 
     [HttpPut("{id}")]

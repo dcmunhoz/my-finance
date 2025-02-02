@@ -1,4 +1,4 @@
-﻿using Finance.Domain.Categories;
+﻿using Finance.Domain.Aggregates.Categories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
